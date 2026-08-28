@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salma's Journey - رسائل إيمانية</title>
+    <!-- خط Cairo و Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome الأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #f4fbf7;
+            --card-bg: rgba(255, 255, 255, 0.92);
+            --card-hover: #ffffff;
+            --text-main: #064e3b;
+            --text-body: #1e293b;
+            --text-sub: #475569;
+            --border-color: rgba(5, 150, 105, 0.12);
+            --primary-accent: #059669; /* أخضر زمردي إيماني */
+            --secondary-accent: #d97706; /* لمسة ذهبية دافئة */
+            --glow-1: rgba(5, 150, 105, 0.1);
+            --glow-2: rgba(217, 119, 6, 0.08);
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #061712;
+            --card-bg: rgba(15, 35, 29, 0.88);
+            --card-hover: rgba(24, 51, 43, 0.95);
+            --text-main: #ecfdf5;
+            --text-body: #e2e8f0;
+            --text-sub: #94a3b8;
+            --border-color: rgba(5, 150, 105, 0.25);
+            --glow-1: rgba(5, 150, 105, 0.2);
+            --glow-2: rgba(217, 119, 6, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', 'Poppins', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-body);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            padding: 1.5rem 1rem 3rem 1rem;
+            overflow-x: hidden;
+        }
+
+        /* توهج الخلفية الروحاني */
+        .bg-glow-1 {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--glow-1) 0%, transparent 70%);
+            top: -120px;
+            right: 5%;
+            filter: blur(80px);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .bg-glow-2 {
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, var(--glow-2) 0%, transparent 70%);
+            bottom: 5%;
+            left: 5%;
+            filter: blur(80px);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* شريط الملاحة العلوي */
+        .top-navbar {
+            width: 100%;
+            max-width: 900px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 0.8rem 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(16px);
+            z-index: 10;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        }
+
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            background: rgba(5, 150, 105, 0.08);
+            padding: 6px 16px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .back-btn:hover {
+            border-color: var(--primary-accent);
+            color: var(--primary-accent);
+        }
+
+        .icon-btn {
+            background: rgba(5, 150, 105, 0.08);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 1.05rem;
+        }
+
+        .icon-btn:hover {
+            border-color: var(--primary-accent);
+            color: var(--primary-accent);
+        }
+
+        /* الحاوية الرئيسية */
+        .main-container {
+            width: 100%;
+            max-width: 900px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 28px;
+            padding: 2.5rem 2rem;
+            backdrop-filter: blur(16px);
+            z-index: 1;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+        }
+
+        .badge-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 18px;
+            background: rgba(5, 150, 105, 0.1);
+            border: 1px solid rgba(5, 150, 105, 0.25);
+            border-radius: 50px;
+            color: var(--primary-accent);
+            font-size: 0.88rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        .hero-title span {
+            background: linear-gradient(135deg, var(--primary-accent), var(--secondary-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            color: var(--text-sub);
+            font-size: 0.98rem;
+            margin-bottom: 2rem;
+        }
+
+        /* شبكة الكروت */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 480px) {
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .tip-card {
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 22px;
+            padding: 1.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .tip-card:hover {
+            border-color: var(--primary-accent);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(5, 150, 105, 0.12);
+            background: var(--card-hover);
+        }
+
+        .tip-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tip-card p {
+            font-size: 0.9rem;
+            color: var(--text-sub);
+            line-height: 1.6;
+            margin-bottom: 1.2rem;
+        }
+
+        .card-action {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--primary-accent);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* المودال / Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(6px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            padding: 1rem;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 26px;
+            width: 100%;
+            max-width: 680px;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 2.2rem;
+            position: relative;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1.2rem;
+            left: 1.2rem;
+            background: rgba(217, 119, 6, 0.1);
+            color: var(--secondary-accent);
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1rem;
+        }
+
+        .close-modal:hover {
+            background: var(--secondary-accent);
+            color: #fff;
+        }
+
+        .modal-title {
+            font-size: 1.45rem;
+            font-weight: 800;
+            margin-bottom: 1.2rem;
+            color: var(--primary-accent);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .modal-body {
+            font-size: 1rem;
+            color: var(--text-body);
+            line-height: 2;
+            white-space: pre-line;
+        }
+
+        .developer-footer {
+            margin-top: 2.5rem;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.85rem;
+            color: var(--text-sub);
+            z-index: 1;
+        }
+
+        .developer-footer span {
+            color: var(--primary-accent);
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-glow-1"></div>
+    <div class="bg-glow-2"></div>
+
+    <!-- شريط الملاحة -->
+    <header class="top-navbar">
+        <a href="articles.html" class="back-btn">
+            <i class="fa-solid fa-arrow-right"></i>
+            المقالات
+        </a>
+        <button class="icon-btn" onclick="toggleTheme()" title="تغيير المظهر">
+            <i class="fa-solid fa-moon" id="theme-icon"></i>
+        </button>
+    </header>
+
+    <!-- المحتوى الرئيسي -->
+    <main class="main-container">
+        <div class="badge-pill">
+            <i class="fa-solid fa-mosque"></i>
+            قبسات وروحانيات
+        </div>
+        <h1 class="hero-title">رسائل <span>إيمانية وطمأنينة</span></h1>
+        <p class="hero-subtitle">كلمات تضيء طريقك، تمنحك السكينة، وتذكرك بالطاعة والتوكل في مسيرتك العلمية واليومية.</p>
+
+        <!-- كروت الرسائل الإيمانية الخمسة -->
+        <div class="cards-grid">
+            
+            <!-- كارت 1 -->
+            <div class="tip-card" onclick="openModal('modal-1')">
+                <div>
+                    <h3>🕌 لماذا نحافظ على الصلاة؟</h3>
+                    <p>الصلاة ليست مجرد عبادة في أوقات محددة، بل هي صلتك بالله، ونظام يومك، ومصدر طمأنينتك ونجاحك.</p>
+                </div>
+                <div class="card-action">اقرأ الرسالة <i class="fa-solid fa-arrow-left"></i></div>
+            </div>
+
+            <!-- كارت 2 -->
+            <div class="tip-card" onclick="openModal('modal-2')">
+                <div>
+                    <h3>🤲 أدعية يحتاجها كل طالب</h3>
+                    <p>أدعية نبوية ومباركة لطلب العلم، التيسير، الفهم، والتوفيق في الدراسة وعند الشعور بالصعوبة.</p>
+                </div>
+                <div class="card-action">اقرأ الأدعية <i class="fa-solid fa-arrow-left"></i></div>
+            </div>
+
+            <!-- كارت 3 -->
+            <div class="tip-card" onclick="openModal('modal-3')">
+                <div>
+                    <h3>❤️ ماذا تعلمنا السنة عن الأخلاق؟</h3>
+                    <p>الأخلاق ليست كلامًا، بل سلوك نعيشه يوميًا من صدق، رحمة، عفو، وكلمة طيبة تجعل علمنا نافعًا.</p>
+                </div>
+                <div class="card-action">اقرأ الرسالة <i class="fa-solid fa-arrow-left"></i></div>
+            </div>
+
+            <!-- كارت 4 -->
+            <div class="tip-card" onclick="openModal('modal-4')">
+                <div>
+                    <h3>🌱 كيف نتعامل مع الصعوبات بالصبر؟</h3>
+                    <p>الصبر لا يعني الاستسلام، بل الاستمرار والتوكل على الله في الأيام الصعبة لأن الصعوبة مؤقتة.</p>
+                </div>
+                <div class="card-action">اقرأ الرسالة <i class="fa-solid fa-arrow-left"></i></div>
+            </div>
+
+            <!-- كارت 5 -->
+            <div class="tip-card" onclick="openModal('modal-5')">
+                <div>
+                    <h3>🤍 أهمية بر الوالدين في حياة الطالب</h3>
+                    <p>طرق بسيطة وعظيمة لبر الوالدين بالكلمة الطيبة، المساعدة، والاجتهاد ليكون النجاح خيراً وبركة.</p>
+                </div>
+                <div class="card-action">اقرأ الرسالة <i class="fa-solid fa-arrow-left"></i></div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- النوافذ التفاعلية (Modals) -->
+
+    <!-- Modal 1 -->
+    <div class="modal-overlay" id="modal-1">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('modal-1')"><i class="fa-solid fa-xmark"></i></button>
+            <h2 class="modal-title">🕌 لماذا نحافظ على الصلاة؟</h2>
+            <div class="modal-body">الصلاة ليست مجرد شيء نؤديه في أوقات محددة، بل هي عبادة عظيمة تجعل يوم المسلم مرتبطًا بالله، وتمنحه فرصة للتوقف عن مشاغل الحياة والتوجه إلى الله.
+
+🤍 لأنها صلة بالله: الصلاة تذكّرنا بالله وتساعدنا على المحافظة على علاقتنا به.
+
+⏰ تنظم يومنا: مواقيت الصلاة تساعد الطالب على ترتيب يومه وتحقيق التوازن بين الدراسة والراحة والعبادة.
+
+🌿 تمنح القلب طمأنينة: عندما نمر بيوم صعب أو نشعر بالقلق، يمكن أن تكون الصلاة فرصة للهدوء واللجوء إلى الله.
+
+✨ تعلّمنا الانضباط: المحافظة على الصلاة في أوقاتها تعوّدنا الالتزام وتنظيم الوقت.
+
+📖 قال الله تعالى: ﴿إِنَّ الصَّلَاةَ كَانَتْ عَلَى الْمُؤْمِنِينَ كِتَابًا مَوْقُوتًا﴾ [النساء: 103].
+
+⭐ رسالة: لا تجعل انشغالك بالدراسة سببًا في نسيان صلاتك؛ نظّم وقتك واجعل الصلاة جزءًا ثابتًا من يومك.
+
+الصلاة والنجاح لا يتعارضان… بل يستطيع الطالب أن يجتهد في علمه ويحافظ على عبادته في الوقت نفسه. 🤍</div>
+        </div>
+    </div>
+
+    <!-- Modal 2 -->
+    <div class="modal-overlay" id="modal-2">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('modal-2')"><i class="fa-solid fa-xmark"></i></button>
+            <h2 class="modal-title">🤲 أدعية يحتاجها كل طالب</h2>
+            <div class="modal-body">الدعاء من أجمل ما يمكن أن يبدأ به الطالب يومه، ومع المذاكرة والاجتهاد يمكن أن يسأل الله التوفيق والفهم والبركة في وقته وعلمه.
+
+📖 عند طلب العلم:
+﴿وَقُلْ رَبِّ زِدْنِي عِلْمًا﴾ [طه: 114]
+
+🧠 لطلب الفهم والتيسير:
+﴿رَبِّ اشْرَحْ لِي صَدْرِي ۝ وَيَسِّرْ لِي أَمْرِي﴾ [طه: 25-26]
+
+🤲 للتوفيق في الدراسة:
+يمكنك أن تدعو الله بما في قلبك، مثل:
+"اللهم وفّقني في دراستي، ويسّر لي فهم ما أتعلم، وبارك لي في وقتي وجهدي."
+
+🌱 عند الشعور بالصعوبة:
+"اللهم أعنّي ولا تعجزني، ويسّر لي أمري، وارزقني الصبر والقوة على الاستمرار."
+
+✨ تذكير: الدعاء لا يغني عن الاجتهاد؛ اجتهد في دراستك، واستعن بالله، ثم ارضَ بما يقدّره لك.
+
+«فادعُ الله بقلبٍ صادق، واسْعَ بما تستطيع، ولا تيأس من رحمته.» 🤍</div>
+        </div>
+    </div>
+
+    <!-- Modal 3 -->
+    <div class="modal-overlay" id="modal-3">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('modal-3')"><i class="fa-solid fa-xmark"></i></button>
+            <h2 class="modal-title">❤️ ماذا تعلمنا السنة عن الأخلاق؟</h2>
+            <div class="modal-body">الأخلاق الجميلة جزء مهم من حياة المسلم، وهي تظهر في تعاملنا مع أهلنا وأصدقائنا ومع كل من حولنا. والسنة النبوية تعلمنا أن الأخلاق ليست كلامًا فقط، بل سلوك نمارسه كل يوم.
+
+😊 الصدق: كن صادقًا في كلامك وتعاملاتك، حتى عندما يكون الصدق صعبًا.
+
+🤍 الرحمة: عامل الآخرين بلطف، ولا تسخر من شخص أو تقلل من شأنه.
+
+🌿 العفو: إذا أخطأ شخص في حقك، حاول أن تسامح عندما تستطيع، ولا تجعل الغضب يتحكم في تصرفاتك.
+
+🗣️ الكلمة الطيبة: فكر قبل أن تتكلم، واختر كلماتك بطريقة لا تؤذي مشاعر الآخرين.
+
+🤝 الأمانة: حافظ على الأمانات والوعود، وكن شخصًا يستطيع الآخرون الوثوق به.
+
+📖 قال رسول الله ﷺ: «إنما بُعثتُ لأتمم مكارم الأخلاق».
+
+⭐ رسالة: اجعل أخلاقك جزءًا من نجاحك؛ فالعلم مهم، لكن الأخلاق هي التي تجعل هذا العلم نافعًا ومحبوبًا.</div>
+        </div>
+    </div>
+
+    <!-- Modal 4 -->
+    <div class="modal-overlay" id="modal-4">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('modal-4')"><i class="fa-solid fa-xmark"></i></button>
+            <h2 class="modal-title">🌱 كيف نتعامل مع الصعوبات بالصبر؟</h2>
+            <div class="modal-body">كل طالب ممكن يمر بأيام صعبة، أو يواجه نتيجة لم يتوقعها، أو يشعر أن الدراسة أصبحت مرهقة. الصبر لا يعني الاستسلام، بل يعني أن نستمر في بذل جهدنا مع الثقة بالله.
+
+🤍 لا تيأس: إذا أخطأت أو فشلت في شيء، اعتبره فرصة تتعلم منها وتبدأ من جديد.
+
+🤲 استعن بالله: ادعُ الله أن ييسر لك أمرك، واطلب منه القوة والتوفيق.
+
+📚 استمر في المحاولة: لا تجعل صعوبة درس أو مادة سببًا في التوقف؛ قسمها إلى خطوات صغيرة وحاول مرة أخرى.
+
+🌿 تقبل ما لا تستطيع تغييره: ركز على الأشياء التي يمكنك تحسينها بدلًا من التفكير المستمر في الماضي.
+
+❤️ تذكر أن الصعوبة مؤقتة: الأيام الصعبة لا تستمر للأبد، ومع الصبر والاجتهاد يمكن أن تتحسن الأمور.
+
+📖 قال الله تعالى: ﴿إِنَّ اللَّهَ مَعَ الصَّابِرِينَ﴾ [البقرة: 153].
+
+⭐ رسالة: اصبر، واجتهد، واستعن بالله، ولا تحكم على مستقبلك من خلال يوم صعب أو نتيجة واحدة.</div>
+        </div>
+    </div>
+
+    <!-- Modal 5 -->
+    <div class="modal-overlay" id="modal-5">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('modal-5')"><i class="fa-solid fa-xmark"></i></button>
+            <h2 class="modal-title">🤍 أهمية بر الوالدين في حياة الطالب</h2>
+            <div class="modal-body">بر الوالدين من أجمل الأخلاق التي يحث عليها الإسلام، وهو لا يحتاج إلى أشياء كبيرة؛ فالكلمة الطيبة، والاحترام، والمساعدة، والاستماع لهم كلها صور من البر.
+
+🌱 الكلمة الطيبة: تحدث مع والديك بأدب، وتجنب رفع صوتك أو الرد بطريقة تجرح مشاعرهما.
+
+🏠 المساعدة: ساعد في البيت قدر استطاعتك، حتى في الأشياء البسيطة.
+
+📚 الاجتهاد في الدراسة: اجتهد في دراستك واستفد من نصائح والديك، واجعل نجاحك سببًا لإسعادهما.
+
+❤️ الاهتمام: اسأل عنهما واهتم بهما، ولا تجعل انشغالك بالدراسة سببًا في إهمالهما.
+
+🤲 الدعاء لهما: من أجمل ما تقدمه لوالديك أن تدعو لهما بالخير والرحمة.
+
+📖 قال الله تعالى: ﴿وَبِالْوَالِدَيْنِ إِحْسَانًا﴾ [الإسراء: 23].
+
+⭐ وتذكر: بر الوالدين ليس شيئًا نفعله أحيانًا، بل خُلُق نحاول أن نحافظ عليه كل يوم.</div>
+        </div>
+    </div>
+
+    <!-- توقيع التطوير -->
+    <div class="developer-footer">
+        Developed by <span>Eng. Salma Ashraf Ghorieb</span>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.getElementById('theme-icon');
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+        }
+
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        // إغلاق المودال عند الضغط في المساحة الخارجية
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal-overlay')) {
+                event.target.classList.remove('active');
+            }
+        }
+    </script>
+</body>
+</html>

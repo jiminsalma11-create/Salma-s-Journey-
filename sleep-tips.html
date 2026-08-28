@@ -1,0 +1,1784 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Salma's Journey - نصائح للنوم</title>
+
+    <!-- الخطوط -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Poppins:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+    <style>
+
+        /* =========================
+           الألوان الأساسية
+        ========================== */
+
+        :root {
+
+            --bg-color: #f5f3ff;
+
+            --card-bg: rgba(255, 255, 255, 0.94);
+
+            --card-hover: #ffffff;
+
+            --text-main: #29235c;
+
+            --text-body: #34314d;
+
+            --text-sub: #716d89;
+
+            --primary-accent: #6d5cae;
+
+            --secondary-accent: #8e7cc3;
+
+            --border-color: rgba(109, 92, 174, 0.16);
+
+            --glow-1: rgba(109, 92, 174, 0.14);
+
+            --glow-2: rgba(142, 124, 195, 0.12);
+        }
+
+
+        /* =========================
+           Dark Mode
+        ========================== */
+
+        [data-theme="dark"] {
+
+            --bg-color: #111025;
+
+            --card-bg: rgba(28, 26, 52, 0.93);
+
+            --card-hover: rgba(38, 35, 68, 0.98);
+
+            --text-main: #f0edff;
+
+            --text-body: #e2dff1;
+
+            --text-sub: #aaa5c1;
+
+            --primary-accent: #a99add;
+
+            --secondary-accent: #c0b5e8;
+
+            --border-color: rgba(169, 154, 221, 0.2);
+
+            --glow-1: rgba(109, 92, 174, 0.2);
+
+            --glow-2: rgba(142, 124, 195, 0.15);
+        }
+
+
+        /* =========================
+           General
+        ========================== */
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+            font-family:
+                'Cairo',
+                'Poppins',
+                sans-serif;
+
+            transition:
+                background-color 0.3s ease,
+                color 0.3s ease,
+                border-color 0.3s ease;
+        }
+
+
+        body {
+
+            background-color:
+                var(--bg-color);
+
+            color:
+                var(--text-body);
+
+            min-height: 100vh;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            position: relative;
+
+            padding:
+                1.5rem 1rem 3rem;
+
+            overflow-x: hidden;
+        }
+
+
+        /* =========================
+           Background Glow
+        ========================== */
+
+        .bg-glow-1 {
+
+            position: absolute;
+
+            width: 500px;
+
+            height: 500px;
+
+            background:
+                radial-gradient(
+                    circle,
+                    var(--glow-1) 0%,
+                    transparent 70%
+                );
+
+            top: -130px;
+
+            right: 5%;
+
+            filter: blur(80px);
+
+            z-index: 0;
+
+            pointer-events: none;
+        }
+
+
+        .bg-glow-2 {
+
+            position: absolute;
+
+            width: 450px;
+
+            height: 450px;
+
+            background:
+                radial-gradient(
+                    circle,
+                    var(--glow-2) 0%,
+                    transparent 70%
+                );
+
+            bottom: 5%;
+
+            left: 5%;
+
+            filter: blur(80px);
+
+            z-index: 0;
+
+            pointer-events: none;
+        }
+
+
+        /* =========================
+           Navbar
+        ========================== */
+
+        .top-navbar {
+
+            width: 100%;
+
+            max-width: 900px;
+
+            background:
+                var(--card-bg);
+
+            border:
+                1px solid var(--border-color);
+
+            border-radius: 20px;
+
+            padding:
+                0.8rem 1.2rem;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            backdrop-filter: blur(16px);
+
+            z-index: 10;
+
+            margin-bottom: 2rem;
+
+            box-shadow:
+                0 10px 30px
+                rgba(60, 50, 100, 0.06);
+        }
+
+
+        /* =========================
+           Back Button
+        ========================== */
+
+        .back-btn {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            color:
+                var(--text-main);
+
+            text-decoration: none;
+
+            font-weight: 700;
+
+            font-size: 0.9rem;
+
+            background:
+                rgba(109, 92, 174, 0.08);
+
+            padding:
+                6px 16px;
+
+            border-radius: 12px;
+
+            border:
+                1px solid var(--border-color);
+        }
+
+
+        .back-btn:hover {
+
+            border-color:
+                var(--primary-accent);
+
+            color:
+                var(--primary-accent);
+
+            transform:
+                translateX(2px);
+        }
+
+
+        /* =========================
+           Theme Button
+        ========================== */
+
+        .icon-btn {
+
+            background:
+                rgba(109, 92, 174, 0.08);
+
+            border:
+                1px solid var(--border-color);
+
+            color:
+                var(--text-main);
+
+            width: 40px;
+
+            height: 40px;
+
+            border-radius: 12px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            cursor: pointer;
+
+            font-size: 1.05rem;
+        }
+
+
+        .icon-btn:hover {
+
+            border-color:
+                var(--primary-accent);
+
+            color:
+                var(--primary-accent);
+
+            transform:
+                rotate(8deg);
+        }
+
+
+        /* =========================
+           Main Container
+        ========================== */
+
+        .main-container {
+
+            width: 100%;
+
+            max-width: 900px;
+
+            background:
+                var(--card-bg);
+
+            border:
+                1px solid var(--border-color);
+
+            border-radius: 28px;
+
+            padding:
+                2.5rem 2rem;
+
+            backdrop-filter:
+                blur(16px);
+
+            z-index: 1;
+
+            box-shadow:
+                0 20px 40px
+                rgba(60, 50, 100, 0.07);
+        }
+
+
+        /* =========================
+           Badge
+        ========================== */
+
+        .badge-pill {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding:
+                6px 18px;
+
+            background:
+                rgba(109, 92, 174, 0.09);
+
+            border:
+                1px solid
+                rgba(109, 92, 174, 0.22);
+
+            border-radius: 50px;
+
+            color:
+                var(--primary-accent);
+
+            font-size:
+                0.88rem;
+
+            font-weight: 700;
+
+            margin-bottom:
+                1.2rem;
+        }
+
+
+        /* =========================
+           Hero
+        ========================== */
+
+        .hero-title {
+
+            font-size:
+                2.2rem;
+
+            font-weight:
+                800;
+
+            line-height:
+                1.3;
+
+            margin-bottom:
+                0.5rem;
+
+            color:
+                var(--text-main);
+        }
+
+
+        .hero-title span {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--primary-accent),
+                    var(--secondary-accent)
+                );
+
+            -webkit-background-clip:
+                text;
+
+            -webkit-text-fill-color:
+                transparent;
+        }
+
+
+        .hero-subtitle {
+
+            color:
+                var(--text-sub);
+
+            font-size:
+                0.98rem;
+
+            margin-bottom:
+                2rem;
+
+            line-height:
+                1.8;
+        }
+
+
+        /* =========================
+           Cards Grid
+        ========================== */
+
+        .cards-grid {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(380px, 1fr)
+                );
+
+            gap:
+                1.5rem;
+        }
+
+
+        @media (max-width: 480px) {
+
+            .cards-grid {
+
+                grid-template-columns:
+                    1fr;
+            }
+        }
+
+
+        /* =========================
+           Card
+        ========================== */
+
+        .tip-card {
+
+            background:
+                var(--bg-color);
+
+            border:
+                1px solid
+                var(--border-color);
+
+            border-radius:
+                22px;
+
+            padding:
+                1.8rem;
+
+            cursor:
+                pointer;
+
+            transition:
+                all 0.3s ease;
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            justify-content:
+                space-between;
+
+            min-height:
+                220px;
+        }
+
+
+        .tip-card:hover {
+
+            border-color:
+                var(--primary-accent);
+
+            transform:
+                translateY(-5px);
+
+            box-shadow:
+                0 14px 30px
+                rgba(109, 92, 174, 0.14);
+
+            background:
+                var(--card-hover);
+        }
+
+
+        .tip-card h3 {
+
+            font-size:
+                1.18rem;
+
+            font-weight:
+                700;
+
+            margin-bottom:
+                0.8rem;
+
+            color:
+                var(--text-main);
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                10px;
+
+            line-height:
+                1.7;
+        }
+
+
+        .tip-card p {
+
+            font-size:
+                0.9rem;
+
+            color:
+                var(--text-sub);
+
+            line-height:
+                1.8;
+
+            margin-bottom:
+                1.2rem;
+        }
+
+
+        .card-action {
+
+            font-size:
+                0.88rem;
+
+            font-weight:
+                700;
+
+            color:
+                var(--primary-accent);
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                6px;
+        }
+
+
+        .card-action i {
+
+            transition:
+                transform 0.3s ease;
+        }
+
+
+        .tip-card:hover
+        .card-action i {
+
+            transform:
+                translateX(-5px);
+        }
+
+
+        /* =========================
+           Modal
+        ========================== */
+
+        .modal-overlay {
+
+            position:
+                fixed;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            background:
+                rgba(17, 16, 37, 0.68);
+
+            backdrop-filter:
+                blur(7px);
+
+            display:
+                flex;
+
+            justify-content:
+                center;
+
+            align-items:
+                center;
+
+            z-index:
+                1000;
+
+            opacity: 0;
+
+            visibility:
+                hidden;
+
+            transition:
+                all 0.3s ease;
+
+            padding:
+                1rem;
+        }
+
+
+        .modal-overlay.active {
+
+            opacity:
+                1;
+
+            visibility:
+                visible;
+        }
+
+
+        .modal-content {
+
+            background:
+                var(--card-bg);
+
+            border:
+                1px solid
+                var(--border-color);
+
+            border-radius:
+                26px;
+
+            width:
+                100%;
+
+            max-width:
+                680px;
+
+            max-height:
+                85vh;
+
+            overflow-y:
+                auto;
+
+            padding:
+                2.2rem;
+
+            position:
+                relative;
+
+            box-shadow:
+                0 25px 50px
+                rgba(0,0,0,0.25);
+
+            transform:
+                scale(0.9);
+
+            transition:
+                transform 0.3s ease;
+        }
+
+
+        .modal-overlay.active
+        .modal-content {
+
+            transform:
+                scale(1);
+        }
+
+
+        /* =========================
+           Close Button
+        ========================== */
+
+        .close-modal {
+
+            position:
+                absolute;
+
+            top:
+                1.2rem;
+
+            left:
+                1.2rem;
+
+            background:
+                rgba(109, 92, 174, 0.10);
+
+            color:
+                var(--primary-accent);
+
+            border:
+                none;
+
+            width:
+                36px;
+
+            height:
+                36px;
+
+            border-radius:
+                50%;
+
+            cursor:
+                pointer;
+
+            display:
+                flex;
+
+            justify-content:
+                center;
+
+            align-items:
+                center;
+
+            font-size:
+                1rem;
+        }
+
+
+        .close-modal:hover {
+
+            background:
+                var(--primary-accent);
+
+            color:
+                #fff;
+        }
+
+
+        /* =========================
+           Modal Title
+        ========================== */
+
+        .modal-title {
+
+            font-size:
+                1.4rem;
+
+            font-weight:
+                800;
+
+            margin-bottom:
+                1.2rem;
+
+            color:
+                var(--primary-accent);
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                10px;
+
+            padding-left:
+                35px;
+
+            line-height:
+                1.7;
+        }
+
+
+        /* =========================
+           Modal Body
+        ========================== */
+
+        .modal-body {
+
+            font-size:
+                1rem;
+
+            color:
+                var(--text-body);
+
+            line-height:
+                2.15;
+
+            white-space:
+                pre-line;
+        }
+
+
+        /* =========================
+           Footer
+        ========================== */
+
+        .developer-footer {
+
+            margin-top:
+                2.5rem;
+
+            text-align:
+                center;
+
+            font-family:
+                'Poppins',
+                sans-serif;
+
+            font-size:
+                0.85rem;
+
+            color:
+                var(--text-sub);
+
+            z-index:
+                1;
+        }
+
+
+        .developer-footer span {
+
+            color:
+                var(--primary-accent);
+
+            font-weight:
+                600;
+        }
+
+
+        /* =========================
+           Mobile
+        ========================== */
+
+        @media (max-width: 600px) {
+
+            body {
+
+                padding:
+                    1rem 0.8rem 2rem;
+            }
+
+
+            .main-container {
+
+                padding:
+                    1.7rem 1rem;
+
+                border-radius:
+                    22px;
+            }
+
+
+            .hero-title {
+
+                font-size:
+                    1.75rem;
+            }
+
+
+            .hero-subtitle {
+
+                font-size:
+                    0.9rem;
+            }
+
+
+            .cards-grid {
+
+                gap:
+                    1rem;
+            }
+
+
+            .tip-card {
+
+                padding:
+                    1.4rem;
+
+                min-height:
+                    200px;
+            }
+
+
+            .tip-card h3 {
+
+                font-size:
+                    1.05rem;
+            }
+
+
+            .modal-content {
+
+                padding:
+                    1.7rem 1.3rem;
+
+                border-radius:
+                    22px;
+            }
+
+
+            .modal-title {
+
+                font-size:
+                    1.2rem;
+            }
+
+
+            .modal-body {
+
+                font-size:
+                    0.93rem;
+
+                line-height:
+                    2;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- الخلفية -->
+
+    <div class="bg-glow-1"></div>
+
+    <div class="bg-glow-2"></div>
+
+
+    <!-- =========================
+         Navbar
+    ========================== -->
+
+    <header class="top-navbar">
+
+
+        <a
+            href="articles.html"
+            class="back-btn">
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+            المقالات
+
+        </a>
+
+
+        <button
+            class="icon-btn"
+            onclick="toggleTheme()"
+            title="تغيير المظهر">
+
+            <i
+                class="fa-solid fa-moon"
+                id="theme-icon">
+            </i>
+
+        </button>
+
+
+    </header>
+
+
+    <!-- =========================
+         Main
+    ========================== -->
+
+    <main class="main-container">
+
+
+        <div class="badge-pill">
+
+            <i class="fa-solid fa-moon"></i>
+
+            نصائح للنوم
+
+        </div>
+
+
+        <h1 class="hero-title">
+
+            نوم هادئ،
+            <span>ويوم أفضل</span>
+
+        </h1>
+
+
+        <p class="hero-subtitle">
+
+            نصائح بسيطة تساعدك على تنظيم نومك،
+            وتهدئة ذهنك، والاستعداد ليوم دراسي أكثر نشاطًا وتركيزًا.
+
+        </p>
+
+
+        <!-- =========================
+             Cards
+        ========================== -->
+
+        <div class="cards-grid">
+
+
+            <!-- Card 1 -->
+
+            <div
+                class="tip-card"
+                onclick="openModal('modal-1')">
+
+                <div>
+
+                    <h3>
+                        🌙 أفضل السور والأذكار والأحاديث قبل النوم
+                    </h3>
+
+                    <p>
+                        اجعل الدقائق الأخيرة من يومك هادئة بذكر الله وقراءة ما تيسر من القرآن والأذكار.
+                    </p>
+
+                </div>
+
+
+                <div class="card-action">
+
+                    اقرأ النصيحة
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                </div>
+
+            </div>
+
+
+            <!-- Card 2 -->
+
+            <div
+                class="tip-card"
+                onclick="openModal('modal-2')">
+
+                <div>
+
+                    <h3>
+                        😴 كيف تحصل على نوم هادئ؟
+                    </h3>
+
+                    <p>
+                        خطوات بسيطة تساعدك على بناء روتين هادئ والاستعداد للنوم بشكل أفضل.
+                    </p>
+
+                </div>
+
+
+                <div class="card-action">
+
+                    اقرأ النصيحة
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                </div>
+
+            </div>
+
+
+            <!-- Card 3 -->
+
+            <div
+                class="tip-card"
+                onclick="openModal('modal-3')">
+
+                <div>
+
+                    <h3>
+                        ⏰ أفضل وقت للنوم والاستيقاظ
+                    </h3>
+
+                    <p>
+                        تعرف على أهمية النوم المنتظم والكافي وتنظيم مواعيد النوم مع الدراسة.
+                    </p>
+
+                </div>
+
+
+                <div class="card-action">
+
+                    اقرأ النصيحة
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                </div>
+
+            </div>
+
+
+            <!-- Card 4 -->
+
+            <div
+                class="tip-card"
+                onclick="openModal('modal-4')">
+
+                <div>
+
+                    <h3>
+                        📱 كيف تتجنب الهاتف قبل النوم؟
+                    </h3>
+
+                    <p>
+                        أفكار عملية تساعدك على تقليل استخدام الهاتف وجعل وقت ما قبل النوم أكثر هدوءًا.
+                    </p>
+
+                </div>
+
+
+                <div class="card-action">
+
+                    اقرأ النصيحة
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                </div>
+
+            </div>
+
+
+            <!-- Card 5 -->
+
+            <div
+                class="tip-card"
+                onclick="openModal('modal-5')">
+
+                <div>
+
+                    <h3>
+                        🧠 كيف يؤثر النوم على التركيز؟
+                    </h3>
+
+                    <p>
+                        النوم والراحة يساعدان الطالب على الفهم والتذكر والانتباه والاستعداد للمذاكرة.
+                    </p>
+
+                </div>
+
+
+                <div class="card-action">
+
+                    اقرأ النصيحة
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                </div>
+
+            </div>
+
+
+            <!-- Card 6 -->
+
+            <div
+                class="tip-card"
+                onclick="openModal('modal-6')">
+
+                <div>
+
+                    <h3>
+                        ⏰ كيف تنظم نومك مع الدراسة؟
+                    </h3>
+
+                    <p>
+                        طريقة بسيطة لتنظيم المذاكرة والنوم معًا دون الحاجة إلى السهر باستمرار.
+                    </p>
+
+                </div>
+
+
+                <div class="card-action">
+
+                    اقرأ النصيحة
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+
+    <!-- ==================================================
+         MODAL 1
+    =================================================== -->
+
+    <div
+        class="modal-overlay"
+        id="modal-1">
+
+        <div class="modal-content">
+
+
+            <button
+                class="close-modal"
+                onclick="closeModal('modal-1')">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+
+            <h2 class="modal-title">
+
+                🌙 أفضل السور والأذكار والأحاديث قبل النوم
+
+            </h2>
+
+
+            <div class="modal-body">
+
+قبل النوم، اجعل لك دقائق هادئة تذكر فيها الله وتقرأ ما تيسر من القرآن والأذكار الواردة عن النبي ﷺ.
+
+📖 سورة الملك:
+
+يمكنك قراءتها قبل النوم، وهي من السور العظيمة.
+
+✨ آية الكرسي:
+
+من الأذكار الواردة عند النوم.
+
+🌿 آخر آيتين من سورة البقرة:
+
+من الأذكار التي ورد فضلها في السنة.
+
+🤲 أذكار النوم:
+
+احرص على قراءة الأذكار الصحيحة الواردة عن النبي ﷺ قبل النوم.
+
+📜 من هدي النبي ﷺ:
+
+كان ﷺ يحرص على أذكار واستعدادات معينة قبل النوم، فتعلم سنته وحاول الاقتداء بها.
+
+❤️ الدعاء:
+
+اختم يومك بالدعاء وسؤال الله الخير والراحة والبركة.
+
+⭐ تذكر:
+
+اجعل وقت ما قبل النوم فرصة للهدوء وذكر الله، وابتعد عن المشتتات قدر الإمكان. 🤍
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==================================================
+         MODAL 2
+    =================================================== -->
+
+    <div
+        class="modal-overlay"
+        id="modal-2">
+
+        <div class="modal-content">
+
+
+            <button
+                class="close-modal"
+                onclick="closeModal('modal-2')">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+
+            <h2 class="modal-title">
+
+                😴 كيف تحصل على نوم هادئ؟
+
+            </h2>
+
+
+            <div class="modal-body">
+
+النوم الهادئ يساعدك تبدأ يومك بنشاط وتركيز، وعلشان تحسن نومك حاول تعمل روتين بسيط قبل النوم.
+
+🌙 ثبّت موعد نومك:
+
+حاول تنام وتستيقظ في أوقات منتظمة قدر الإمكان.
+
+📱 ابتعد عن الهاتف:
+
+قلل استخدام الموبايل قبل النوم، وخلي آخر وقت في يومك أكثر هدوءًا.
+
+🛏️ جهّز مكانك:
+
+خلي مكان النوم هادئًا ومريحًا ومناسبًا للراحة.
+
+☕ تجنب المنبهات ليلًا:
+
+قلل المشروبات التي تحتوي على الكافيين في المساء.
+
+🧠 أفرغ ذهنك:
+
+لو عندك مهام كثيرة، اكتبها لليوم التالي بدل ما تفضل تفكر فيها وقت النوم.
+
+🤲 اختم يومك بهدوء:
+
+يمكنك قراءة أذكار النوم والدعاء قبل النوم.
+
+⭐ تذكر:
+
+النوم الجيد مش رفاهية؛ هو جزء مهم من يوم الطالب ويساعده على الدراسة والتركيز بشكل أفضل. 🤍
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==================================================
+         MODAL 3
+    =================================================== -->
+
+    <div
+        class="modal-overlay"
+        id="modal-3">
+
+        <div class="modal-content">
+
+
+            <button
+                class="close-modal"
+                onclick="closeModal('modal-3')">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+
+            <h2 class="modal-title">
+
+                ⏰ أفضل وقت للنوم والاستيقاظ
+
+            </h2>
+
+
+            <div class="modal-body">
+
+مفيش وقت واحد مناسب للجميع، لكن الأهم إنك تحصل على نوم كافٍ ومنتظم يناسب مواعيد دراستك وحياتك اليومية.
+
+⏰ ثبّت مواعيدك:
+
+حاول تنام وتستيقظ في أوقات متقاربة كل يوم.
+
+😴 اهتم بمدة النوم:
+
+في سن المراهقة، يُنصح عادةً بحوالي 8–10 ساعات من النوم يوميًا.
+
+☀️ ابدأ يومك بنشاط:
+
+الاستيقاظ في موعد منتظم يساعدك على تنظيم يومك والاستعداد للدراسة.
+
+📚 نظّم المذاكرة:
+
+لا تترك كل دراستك لآخر الليل حتى لا تضطر للسهر.
+
+🌙 استعد للنوم:
+
+اجعل آخر جزء من يومك هادئًا، وقلل استخدام الهاتف قبل النوم.
+
+⭐ تذكر:
+
+النوم الكافي والمنتظم يساعدك على أن تبدأ يومك بتركيز وطاقة أفضل. 🤍
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==================================================
+         MODAL 4
+    =================================================== -->
+
+    <div
+        class="modal-overlay"
+        id="modal-4">
+
+        <div class="modal-content">
+
+
+            <button
+                class="close-modal"
+                onclick="closeModal('modal-4')">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+
+            <h2 class="modal-title">
+
+                📱 كيف تتجنب الهاتف قبل النوم؟
+
+            </h2>
+
+
+            <div class="modal-body">
+
+استخدام الهاتف لفترة طويلة قبل النوم ممكن يخليك تفضل صاحي وتشتت ذهنك، لذلك حاول تخلي آخر وقت في يومك أكثر هدوءًا.
+
+🌙 حدد وقتًا لإغلاق الهاتف:
+
+اختار موعدًا قبل النوم تتوقف فيه عن استخدامه.
+
+🔕 اقفل الإشعارات:
+
+حتى لا تستمر التنبيهات في جذب انتباهك.
+
+📱 ضع الهاتف بعيدًا:
+
+اتركه في مكان بعيد عن السرير حتى لا يكون أول شيء تمسكه قبل النوم.
+
+📖 استبدله بشيء هادئ:
+
+ممكن تقرأ شيئًا بسيطًا أو تجهز أغراضك لليوم التالي.
+
+⏰ التزم بروتين ثابت:
+
+مع الوقت، هتتعود إن وقت ما قبل النوم مخصص للهدوء والاستعداد للنوم.
+
+⭐ تذكر:
+
+كلما قلّت المشتتات قبل النوم، أصبح من الأسهل أن تهدأ وتستعد للراحة. 🤍
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==================================================
+         MODAL 5
+    =================================================== -->
+
+    <div
+        class="modal-overlay"
+        id="modal-5">
+
+        <div class="modal-content">
+
+
+            <button
+                class="close-modal"
+                onclick="closeModal('modal-5')">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+
+            <h2 class="modal-title">
+
+                🧠 كيف يؤثر النوم على التركيز؟
+
+            </h2>
+
+
+            <div class="modal-body">
+
+النوم والراحة لهم دور مهم في قدرة الطالب على التركيز والتعلم. عندما يحصل جسمك وعقلك على الراحة، يكون من الأسهل عليك متابعة الدرس واستيعاب المعلومات.
+
+📚 يساعد على الفهم:
+
+الراحة تجعل ذهنك أكثر استعدادًا لاستقبال المعلومات الجديدة.
+
+🧠 يدعم التذكر:
+
+النوم يساعد الدماغ على معالجة المعلومات التي تعلمتها خلال اليوم.
+
+🎯 يحسن الانتباه:
+
+عندما تكون مرتاحًا، يكون من الأسهل عليك التركيز في المذاكرة وتقليل التشتت.
+
+😴 يقلل الإرهاق:
+
+قلة النوم قد تجعلك تشعر بالتعب، مما يجعل المذاكرة أكثر صعوبة.
+
+⏰ وازن بين الاثنين:
+
+لا تجعل المذاكرة سببًا للسهر المستمر؛ نظّم وقتك بحيث تحصل على وقت كافٍ للنوم والراحة.
+
+⭐ تذكر:
+
+النوم ليس عدو المذاكرة، بل جزء من الاستعداد الجيد لها. 🤍
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==================================================
+         MODAL 6
+    =================================================== -->
+
+    <div
+        class="modal-overlay"
+        id="modal-6">
+
+        <div class="modal-content">
+
+
+            <button
+                class="close-modal"
+                onclick="closeModal('modal-6')">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+
+            <h2 class="modal-title">
+
+                ⏰ كيف تنظم نومك مع الدراسة؟
+
+            </h2>
+
+
+            <div class="modal-body">
+
+تنظيم النوم مع الدراسة يساعدك تحافظ على نشاطك وتركيزك، ويخليك تستفيد من وقت المذاكرة بشكل أفضل.
+
+😴 حدد وقتًا ثابتًا للنوم:
+
+حاول يكون عندك موعد منتظم للنوم والاستيقاظ قدر الإمكان.
+
+📚 نظّم مذاكرتك:
+
+خلّص جزءًا من دراستك خلال اليوم بدل ما تترك كل شيء لوقت متأخر من الليل.
+
+📱 قلل استخدام الهاتف قبل النوم:
+
+ابعد عن الموبايل والمحتوى المشتت وخلي وقتك قبل النوم أهدأ.
+
+🌙 جهّز نفسك للنوم:
+
+قبل موعد النوم، قلل الأنشطة التي تحتاج تركيزًا كبيرًا وحاول تهدئة جسمك وعقلك.
+
+⏰ لا تهمل النوم بسبب المذاكرة:
+
+النوم جزء من يومك الدراسي، وليس وقتًا ضائعًا.
+
+⭐ تذكر:
+
+تنظيم وقتك خلال اليوم يساعدك تذاكر وتنام بشكل أفضل دون أن تضطر للسهر باستمرار.
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         Footer
+    ========================== -->
+
+    <div class="developer-footer">
+
+        Developed by
+
+        <span>
+            Eng. Salma Ashraf Ghorieb
+        </span>
+
+    </div>
+
+
+    <!-- =========================
+         JavaScript
+    ========================== -->
+
+    <script>
+
+
+        /* =========================
+           Dark / Light Mode
+        ========================== */
+
+        function toggleTheme() {
+
+            const body =
+                document.body;
+
+            const icon =
+                document.getElementById(
+                    "theme-icon"
+                );
+
+
+            if (
+                body.getAttribute(
+                    "data-theme"
+                ) === "dark"
+            ) {
+
+                body.removeAttribute(
+                    "data-theme"
+                );
+
+                icon.classList.remove(
+                    "fa-sun"
+                );
+
+                icon.classList.add(
+                    "fa-moon"
+                );
+
+            }
+
+            else {
+
+                body.setAttribute(
+                    "data-theme",
+                    "dark"
+                );
+
+                icon.classList.remove(
+                    "fa-moon"
+                );
+
+                icon.classList.add(
+                    "fa-sun"
+                );
+
+            }
+
+        }
+
+
+        /* =========================
+           Open Modal
+        ========================== */
+
+        function openModal(modalId) {
+
+            document
+                .getElementById(modalId)
+                .classList.add("active");
+
+        }
+
+
+        /* =========================
+           Close Modal
+        ========================== */
+
+        function closeModal(modalId) {
+
+            document
+                .getElementById(modalId)
+                .classList.remove("active");
+
+        }
+
+
+        /* =========================
+           Close Outside
+        ========================== */
+
+        window.onclick =
+            function(event) {
+
+                if (
+                    event.target.classList
+                        .contains(
+                            "modal-overlay"
+                        )
+                ) {
+
+                    event.target
+                        .classList
+                        .remove(
+                            "active"
+                        );
+
+                }
+
+            };
+
+
+        /* =========================
+           ESC
+        ========================== */
+
+        document.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (
+                    event.key === "Escape"
+                ) {
+
+                    document
+                        .querySelectorAll(
+                            ".modal-overlay.active"
+                        )
+                        .forEach(
+                            modal => {
+
+                                modal.classList
+                                    .remove(
+                                        "active"
+                                    );
+
+                            }
+                        );
+
+                }
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>

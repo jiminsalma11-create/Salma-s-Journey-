@@ -1,0 +1,1692 @@
+register.html
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Salma's Journey - إنشاء حساب</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Poppins:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+
+        /* =========================
+           VARIABLES
+        ========================== */
+
+        :root {
+
+            --bg-color: #0b0f19;
+
+            --card-bg: rgba(18, 24, 38, 0.78);
+
+            --text-main: #ffffff;
+
+            --text-sub: #94a3b8;
+
+            --input-bg: rgba(11, 15, 25, 0.65);
+
+            --border-color: rgba(255, 255, 255, 0.08);
+
+            --primary-accent: #ec4899;
+
+            --secondary-accent: #8b5cf6;
+
+            --glow-1: rgba(236, 72, 153, 0.18);
+
+            --glow-2: rgba(139, 92, 246, 0.15);
+
+        }
+
+
+        /* =========================
+           LIGHT MODE
+        ========================== */
+
+        [data-theme="light"] {
+
+            --bg-color: #f8fafc;
+
+            --card-bg: rgba(255, 255, 255, 0.90);
+
+            --text-main: #0f172a;
+
+            --text-sub: #64748b;
+
+            --input-bg: #f1f5f9;
+
+            --border-color: rgba(0, 0, 0, 0.08);
+
+            --glow-1: rgba(236, 72, 153, 0.12);
+
+            --glow-2: rgba(139, 92, 246, 0.10);
+
+        }
+
+
+        /* =========================
+           RESET
+        ========================== */
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+            font-family:
+                'Cairo',
+                'Poppins',
+                sans-serif;
+
+        }
+
+
+        /* =========================
+           BODY
+        ========================== */
+
+        body {
+
+            background-color: var(--bg-color);
+
+            color: var(--text-main);
+
+            min-height: 100vh;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+
+            position: relative;
+
+            overflow-x: hidden;
+
+            padding: 1.5rem;
+
+            transition:
+                background-color 0.3s ease,
+                color 0.3s ease;
+
+        }
+
+
+        /* =========================
+           BACKGROUND GLOW
+        ========================== */
+
+        .bg-glow-1 {
+
+            position: fixed;
+
+            width: 380px;
+
+            height: 380px;
+
+            background:
+                radial-gradient(
+                    circle,
+                    var(--glow-1) 0%,
+                    transparent 70%
+                );
+
+            top: 8%;
+
+            right: 12%;
+
+            filter: blur(60px);
+
+            z-index: 0;
+
+            pointer-events: none;
+
+        }
+
+
+        .bg-glow-2 {
+
+            position: fixed;
+
+            width: 350px;
+
+            height: 350px;
+
+            background:
+                radial-gradient(
+                    circle,
+                    var(--glow-2) 0%,
+                    transparent 70%
+                );
+
+            bottom: 8%;
+
+            left: 12%;
+
+            filter: blur(60px);
+
+            z-index: 0;
+
+            pointer-events: none;
+
+        }
+
+
+        /* =========================
+           THEME BUTTON
+        ========================== */
+
+        .theme-toggle-btn {
+
+            position: fixed;
+
+            top: 20px;
+
+            left: 20px;
+
+            z-index: 100;
+
+            width: 46px;
+
+            height: 46px;
+
+            border-radius: 50%;
+
+            border: 1px solid var(--border-color);
+
+            background: var(--card-bg);
+
+            color: var(--text-main);
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            cursor: pointer;
+
+            font-size: 1.1rem;
+
+            backdrop-filter: blur(12px);
+
+            -webkit-backdrop-filter: blur(12px);
+
+            box-shadow:
+                0 5px 15px rgba(0, 0, 0, 0.15);
+
+            transition:
+                transform 0.3s ease,
+                background-color 0.3s ease,
+                color 0.3s ease;
+
+        }
+
+
+        .theme-toggle-btn:hover {
+
+            transform: scale(1.08);
+
+        }
+
+
+        /* =========================
+           WHATSAPP BUTTON
+        ========================== */
+
+        .floating-btn {
+
+            position: fixed;
+
+            bottom: 25px;
+
+            left: 25px;
+
+            z-index: 100;
+
+            width: 55px;
+
+            height: 55px;
+
+            border-radius: 50%;
+
+            background: #25d366;
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-decoration: none;
+
+            font-size: 1.6rem;
+
+            box-shadow:
+                0 8px 20px rgba(37, 211, 102, 0.35);
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+
+        }
+
+
+        .floating-btn:hover {
+
+            transform: scale(1.1);
+
+            box-shadow:
+                0 10px 25px rgba(37, 211, 102, 0.55);
+
+        }
+
+
+        /* =========================
+           AUTH CARD
+        ========================== */
+
+        .auth-card {
+
+            position: relative;
+
+            z-index: 1;
+
+            width: 100%;
+
+            max-width: 440px;
+
+            padding: 2.5rem 2rem;
+
+            background: var(--card-bg);
+
+            border: 1px solid var(--border-color);
+
+            border-radius: 24px;
+
+            box-shadow:
+                0 20px 45px rgba(0, 0, 0, 0.30);
+
+            backdrop-filter: blur(18px);
+
+            -webkit-backdrop-filter: blur(18px);
+
+            transition:
+                background-color 0.3s ease,
+                border-color 0.3s ease;
+
+        }
+
+
+        /* =========================
+           BRAND
+        ========================== */
+
+        .brand-header {
+
+            text-align: center;
+
+            margin-bottom: 1.6rem;
+
+        }
+
+
+        .brand-name {
+
+            font-family: 'Poppins', sans-serif;
+
+            font-size: 1.65rem;
+
+            font-weight: 800;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--primary-accent),
+                    var(--secondary-accent)
+                );
+
+            -webkit-background-clip: text;
+
+            -webkit-text-fill-color: transparent;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .brand-line {
+
+            width: 55px;
+
+            height: 3px;
+
+            margin: auto;
+
+            border-radius: 20px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--primary-accent),
+                    var(--secondary-accent)
+                );
+
+        }
+
+
+        /* =========================
+           HEADER
+        ========================== */
+
+        .auth-header {
+
+            text-align: center;
+
+        }
+
+
+        .auth-header h2 {
+
+            font-size: 1.5rem;
+
+            font-weight: 700;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .auth-header p {
+
+            color: var(--text-sub);
+
+            font-size: 0.9rem;
+
+            margin-bottom: 1.6rem;
+
+        }
+
+
+        /* =========================
+           INPUT GROUP
+        ========================== */
+
+        .input-group {
+
+            position: relative;
+
+            margin-bottom: 1.15rem;
+
+        }
+
+
+        .input-group input {
+
+            width: 100%;
+
+            height: 52px;
+
+            padding:
+                0 3rem
+                0 3rem;
+
+            border-radius: 14px;
+
+            border: 1px solid var(--border-color);
+
+            background: var(--input-bg);
+
+            color: var(--text-main);
+
+            font-size: 0.95rem;
+
+            outline: none;
+
+            transition:
+                border-color 0.3s ease,
+                box-shadow 0.3s ease,
+                background-color 0.3s ease;
+
+        }
+
+
+        .input-group input::placeholder {
+
+            color: var(--text-sub);
+
+        }
+
+
+        .input-group input:focus {
+
+            border-color:
+                var(--primary-accent);
+
+            box-shadow:
+                0 0 14px
+                rgba(236, 72, 153, 0.22);
+
+        }
+
+
+        .input-icon {
+
+            position: absolute;
+
+            right: 1.15rem;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            color: var(--text-sub);
+
+            pointer-events: none;
+
+            font-size: 1rem;
+
+        }
+
+
+        /* =========================
+           PASSWORD TOGGLE
+        ========================== */
+
+        .toggle-password {
+
+            position: absolute;
+
+            left: 1.15rem;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            color: var(--text-sub);
+
+            cursor: pointer;
+
+            font-size: 0.95rem;
+
+            transition: color 0.2s ease;
+
+        }
+
+
+        .toggle-password:hover {
+
+            color: var(--primary-accent);
+
+        }
+
+
+        /* =========================
+           PASSWORD STRENGTH
+        ========================== */
+
+        .password-strength {
+
+            display: none;
+
+            margin-top: -0.55rem;
+
+            margin-bottom: 1rem;
+
+        }
+
+
+        .strength-bar {
+
+            width: 100%;
+
+            height: 5px;
+
+            background:
+                var(--input-bg);
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .strength-progress {
+
+            width: 0%;
+
+            height: 100%;
+
+            border-radius: 20px;
+
+            transition: width 0.3s ease;
+
+        }
+
+
+        .strength-text {
+
+            color: var(--text-sub);
+
+            font-size: 0.72rem;
+
+        }
+
+
+        /* =========================
+           TERMS
+        ========================== */
+
+        .terms {
+
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 8px;
+
+            margin:
+                0.4rem 0
+                1.3rem;
+
+            color: var(--text-sub);
+
+            font-size: 0.78rem;
+
+            line-height: 1.7;
+
+            cursor: pointer;
+
+        }
+
+
+        .terms input {
+
+            margin-top: 5px;
+
+            accent-color:
+                var(--primary-accent);
+
+            cursor: pointer;
+
+        }
+
+
+        /* =========================
+           SUBMIT BUTTON
+        ========================== */
+
+        .submit-btn {
+
+            width: 100%;
+
+            height: 52px;
+
+            border: none;
+
+            border-radius: 14px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--primary-accent),
+                    var(--secondary-accent)
+                );
+
+            color: #ffffff;
+
+            font-size: 1rem;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 6px 18px
+                rgba(236, 72, 153, 0.22);
+
+            transition:
+                transform 0.2s ease,
+                opacity 0.2s ease;
+
+        }
+
+
+        .submit-btn:hover {
+
+            transform: translateY(-2px);
+
+            opacity: 0.95;
+
+        }
+
+
+        .submit-btn:disabled {
+
+            opacity: 0.65;
+
+            cursor: not-allowed;
+
+            transform: none;
+
+        }
+
+
+        /* =========================
+           LOGIN LINK
+        ========================== */
+
+        .login-link {
+
+            text-align: center;
+
+            margin-top: 1.4rem;
+
+            color: var(--text-sub);
+
+            font-size: 0.85rem;
+
+        }
+
+
+        .login-link a {
+
+            color:
+                var(--primary-accent);
+
+            text-decoration: none;
+
+            font-weight: 700;
+
+        }
+
+
+        .login-link a:hover {
+
+            text-decoration: underline;
+
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        .developer-footer {
+
+            position: relative;
+
+            z-index: 1;
+
+            margin-top: 1.8rem;
+
+            text-align: center;
+
+            font-family: 'Poppins', sans-serif;
+
+            color: var(--text-sub);
+
+            font-size: 0.82rem;
+
+        }
+
+
+        .developer-footer span {
+
+            color:
+                var(--primary-accent);
+
+            font-weight: 600;
+
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================== */
+
+        @media (max-width: 500px) {
+
+            body {
+
+                padding: 1rem;
+
+            }
+
+
+            .auth-card {
+
+                padding:
+                    2rem 1.25rem;
+
+                border-radius: 20px;
+
+            }
+
+
+            .theme-toggle-btn {
+
+                top: 15px;
+
+                left: 15px;
+
+            }
+
+
+            .floating-btn {
+
+                width: 50px;
+
+                height: 50px;
+
+                bottom: 18px;
+
+                left: 18px;
+
+                font-size: 1.4rem;
+
+            }
+
+
+            .developer-footer {
+
+                font-size: 0.75rem;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         THEME BUTTON
+    ========================== -->
+
+    <button
+        type="button"
+        class="theme-toggle-btn"
+        id="theme-toggle"
+        title="تغيير المظهر"
+        aria-label="تغيير المظهر">
+
+        <i
+            class="fa-solid fa-moon"
+            id="theme-icon">
+        </i>
+
+    </button>
+
+
+    <!-- =========================
+         WHATSAPP
+    ========================== -->
+
+    <a
+        href="https://wa.me/201206304684"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="floating-btn"
+        title="تواصل عبر WhatsApp">
+
+        <i class="fa-brands fa-whatsapp"></i>
+
+    </a>
+
+
+    <!-- =========================
+         BACKGROUND
+    ========================== -->
+
+    <div class="bg-glow-1"></div>
+
+    <div class="bg-glow-2"></div>
+
+
+    <!-- =========================
+         REGISTER CARD
+    ========================== -->
+
+    <div class="auth-card">
+
+
+        <!-- BRAND -->
+
+        <div class="brand-header">
+
+            <h1 class="brand-name">
+                Salma's Journey
+            </h1>
+
+            <div class="brand-line"></div>
+
+        </div>
+
+
+        <!-- HEADER -->
+
+        <div class="auth-header">
+
+            <h2>
+                إنشاء حساب جديد
+            </h2>
+
+            <p>
+                انضمي إلينا وابدئي رحلتك التعليمية
+            </p>
+
+        </div>
+
+
+        <!-- =========================
+             REGISTER FORM
+        ========================== -->
+
+        <form id="register-form">
+
+
+            <!-- NAME -->
+
+            <div class="input-group">
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="الاسم الكامل"
+                    autocomplete="name"
+                    required>
+
+                <i
+                    class="fa-regular fa-user input-icon">
+                </i>
+
+            </div>
+
+
+            <!-- EMAIL -->
+
+            <div class="input-group">
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="البريد الإلكتروني"
+                    autocomplete="email"
+                    required>
+
+                <i
+                    class="fa-regular fa-envelope input-icon">
+                </i>
+
+            </div>
+
+
+            <!-- PASSWORD -->
+
+            <div class="input-group">
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="كلمة المرور"
+                    autocomplete="new-password"
+                    minlength="6"
+                    required>
+
+                <i
+                    class="fa-solid fa-lock input-icon">
+                </i>
+
+                <i
+                    class="fa-regular fa-eye toggle-password"
+                    data-target="password"
+                    role="button"
+                    tabindex="0"
+                    aria-label="إظهار كلمة المرور">
+                </i>
+
+            </div>
+
+
+            <!-- PASSWORD STRENGTH -->
+
+            <div
+                class="password-strength"
+                id="password-strength">
+
+                <div class="strength-bar">
+
+                    <div
+                        class="strength-progress"
+                        id="strength-progress">
+                    </div>
+
+                </div>
+
+                <div
+                    class="strength-text"
+                    id="strength-text">
+                </div>
+
+            </div>
+
+
+            <!-- CONFIRM PASSWORD -->
+
+            <div class="input-group">
+
+                <input
+                    type="password"
+                    id="confirm-password"
+                    placeholder="تأكيد كلمة المرور"
+                    autocomplete="new-password"
+                    minlength="6"
+                    required>
+
+                <i
+                    class="fa-solid fa-shield-halved input-icon">
+                </i>
+
+                <i
+                    class="fa-regular fa-eye toggle-password"
+                    data-target="confirm-password"
+                    role="button"
+                    tabindex="0"
+                    aria-label="إظهار كلمة المرور">
+                </i>
+
+            </div>
+
+
+            <!-- TERMS -->
+
+            <label class="terms">
+
+                <input
+                    type="checkbox"
+                    id="terms"
+                    required>
+
+                <span>
+                    أوافق على شروط استخدام المنصة
+                    وأتعهد باستخدام الحساب بطريقة صحيحة.
+                </span>
+
+            </label>
+
+
+            <!-- SUBMIT -->
+
+            <button
+                type="submit"
+                class="submit-btn"
+                id="register-btn">
+
+                إنشاء الحساب
+
+            </button>
+
+
+        </form>
+
+
+        <!-- LOGIN -->
+
+        <div class="login-link">
+
+            لديك حساب بالفعل؟
+
+            <a href="home.html">
+                تسجيل الدخول
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <div class="developer-footer">
+
+        Developed by
+
+        <span>
+            Eng. Salma Ashraf Ghorieb
+        </span>
+
+    </div>
+
+
+
+    <!-- =========================
+         FIREBASE SCRIPT
+    ========================== -->
+
+    <script type="module">
+
+
+        // =========================
+        // FIREBASE IMPORTS
+        // =========================
+
+        import { auth, db } from "./firebase.js";
+
+
+        import {
+            createUserWithEmailAndPassword
+        } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+
+        import {
+            doc,
+            setDoc,
+            serverTimestamp
+        } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+
+
+        // =========================
+        // ELEMENTS
+        // =========================
+
+        const themeButton =
+            document.getElementById("theme-toggle");
+
+
+        const themeIcon =
+            document.getElementById("theme-icon");
+
+
+        const registerForm =
+            document.getElementById("register-form");
+
+
+        const registerButton =
+            document.getElementById("register-btn");
+
+
+        const passwordInput =
+            document.getElementById("password");
+
+
+        const confirmPasswordInput =
+            document.getElementById("confirm-password");
+
+
+        const strengthBox =
+            document.getElementById("password-strength");
+
+
+        const strengthProgress =
+            document.getElementById("strength-progress");
+
+
+        const strengthText =
+            document.getElementById("strength-text");
+
+
+
+        // =========================
+        // DARK / LIGHT MODE
+        // =========================
+
+        function applyTheme(theme) {
+
+            if (theme === "light") {
+
+                document.body.setAttribute(
+                    "data-theme",
+                    "light"
+                );
+
+                themeIcon.classList.remove(
+                    "fa-moon"
+                );
+
+                themeIcon.classList.add(
+                    "fa-sun"
+                );
+
+            } else {
+
+                document.body.removeAttribute(
+                    "data-theme"
+                );
+
+                themeIcon.classList.remove(
+                    "fa-sun"
+                );
+
+                themeIcon.classList.add(
+                    "fa-moon"
+                );
+
+            }
+
+        }
+
+
+        function toggleTheme() {
+
+            const currentTheme =
+                document.body.getAttribute(
+                    "data-theme"
+                );
+
+
+            if (currentTheme === "light") {
+
+                applyTheme("dark");
+
+                localStorage.setItem(
+                    "theme",
+                    "dark"
+                );
+
+            } else {
+
+                applyTheme("light");
+
+                localStorage.setItem(
+                    "theme",
+                    "light"
+                );
+
+            }
+
+        }
+
+
+        // تشغيل زر المظهر
+
+        themeButton.addEventListener(
+            "click",
+            toggleTheme
+        );
+
+
+
+        // =========================
+        // LOAD SAVED THEME
+        // =========================
+
+        const savedTheme =
+            localStorage.getItem("theme");
+
+
+        if (savedTheme === "light") {
+
+            applyTheme("light");
+
+        } else {
+
+            applyTheme("dark");
+
+        }
+
+
+
+        // =========================
+        // PASSWORD VISIBILITY
+        // ==========================
+
+        const passwordToggleButtons =
+            document.querySelectorAll(
+                ".toggle-password"
+            );
+
+
+        passwordToggleButtons.forEach(
+            function (button) {
+
+                button.addEventListener(
+                    "click",
+                    function () {
+
+                        const targetId =
+                            button.dataset.target;
+
+                        const input =
+                            document.getElementById(
+                                targetId
+                            );
+
+
+                        if (
+                            input.type ===
+                            "password"
+                        ) {
+
+                            input.type =
+                                "text";
+
+                            button.classList.remove(
+                                "fa-eye"
+                            );
+
+                            button.classList.add(
+                                "fa-eye-slash"
+                            );
+
+                        } else {
+
+                            input.type =
+                                "password";
+
+                            button.classList.remove(
+                                "fa-eye-slash"
+                            );
+
+                            button.classList.add(
+                                "fa-eye"
+                            );
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+
+
+        // =========================
+        // PASSWORD STRENGTH
+        // ==========================
+
+        passwordInput.addEventListener(
+            "input",
+            function () {
+
+                const password =
+                    passwordInput.value;
+
+
+                if (!password) {
+
+                    strengthBox.style.display =
+                        "none";
+
+                    strengthProgress.style.width =
+                        "0%";
+
+                    strengthText.textContent =
+                        "";
+
+                    return;
+
+                }
+
+
+                strengthBox.style.display =
+                    "block";
+
+
+                let score = 0;
+
+
+                if (password.length >= 6) {
+
+                    score++;
+
+                }
+
+
+                if (password.length >= 8) {
+
+                    score++;
+
+                }
+
+
+                if (/[A-Z]/.test(password)) {
+
+                    score++;
+
+                }
+
+
+                if (/[0-9]/.test(password)) {
+
+                    score++;
+
+                }
+
+
+                if (/[^A-Za-z0-9]/.test(password)) {
+
+                    score++;
+
+                }
+
+
+
+                if (score <= 2) {
+
+                    strengthProgress.style.width =
+                        "35%";
+
+                    strengthText.textContent =
+                        "كلمة المرور ضعيفة";
+
+                }
+
+                else if (score <= 3) {
+
+                    strengthProgress.style.width =
+                        "65%";
+
+                    strengthText.textContent =
+                        "كلمة المرور متوسطة";
+
+                }
+
+                else {
+
+                    strengthProgress.style.width =
+                        "100%";
+
+                    strengthText.textContent =
+                        "كلمة المرور قوية";
+
+                }
+
+            }
+        );
+
+
+
+        // =========================
+        // REGISTER ACCOUNT
+        // ==========================
+
+        registerForm.addEventListener(
+            "submit",
+            async function (event) {
+
+                event.preventDefault();
+
+
+                const name =
+                    document
+                        .getElementById("name")
+                        .value
+                        .trim();
+
+
+                const email =
+                    document
+                        .getElementById("email")
+                        .value
+                        .trim();
+
+
+                const password =
+                    passwordInput.value;
+
+
+                const confirmPassword =
+                    confirmPasswordInput.value;
+
+
+                const terms =
+                    document
+                        .getElementById("terms")
+                        .checked;
+
+
+
+                // =========================
+                // VALIDATION
+                // ==========================
+
+                if (
+                    !name ||
+                    !email ||
+                    !password ||
+                    !confirmPassword
+                ) {
+
+                    alert(
+                        "من فضلك املئي جميع البيانات."
+                    );
+
+                    return;
+
+                }
+
+
+                if (password.length < 6) {
+
+                    alert(
+                        "كلمة المرور يجب أن تكون 6 أحرف أو أكثر."
+                    );
+
+                    return;
+
+                }
+
+
+                if (
+                    password !==
+                    confirmPassword
+                ) {
+
+                    alert(
+                        "كلمتا المرور غير متطابقتين."
+                    );
+
+                    return;
+
+                }
+
+
+                if (!terms) {
+
+                    alert(
+                        "يجب الموافقة على شروط استخدام المنصة."
+                    );
+
+                    return;
+
+                }
+
+
+
+                // =========================
+                // DISABLE BUTTON
+                // =========================
+
+                registerButton.disabled =
+                    true;
+
+                registerButton.textContent =
+                    "جاري إنشاء الحساب...";
+
+
+
+                try {
+
+
+                    // =========================
+                    // CREATE FIREBASE USER
+                    // =========================
+
+                    const userCredential =
+                        await createUserWithEmailAndPassword(
+                            auth,
+                            email,
+                            password
+                        );
+
+
+                    const user =
+                        userCredential.user;
+
+
+
+                    // =========================
+                    // SAVE USER IN FIRESTORE
+                    // =========================
+
+                    await setDoc(
+                        doc(
+                            db,
+                            "users",
+                            user.uid
+                        ),
+                        {
+
+                            uid: user.uid,
+
+                            name: name,
+
+                            email: email,
+
+                            role: "student",
+
+                            createdAt:
+                                serverTimestamp(),
+
+                            lastLogin:
+                                serverTimestamp()
+
+                        }
+                    );
+
+
+
+                    // =========================
+                    // SUCCESS
+                    // =========================
+
+                    alert(
+                        "تم إنشاء الحساب بنجاح ❤️"
+                    );
+
+
+                    window.location.href =
+                        "dashboard.html";
+
+
+                }
+
+                catch (error) {
+
+                    console.error(
+                        "Firebase Register Error:",
+                        error
+                    );
+
+
+                    // إعادة الزر لوضعه الطبيعي
+
+                    registerButton.disabled =
+                        false;
+
+                    registerButton.textContent =
+                        "إنشاء الحساب";
+
+
+
+                    // =========================
+                    // FIREBASE ERRORS
+                    // =========================
+
+                    if (
+                        error.code ===
+                        "auth/email-already-in-use"
+                    ) {
+
+                        alert(
+                            "هذا البريد الإلكتروني مستخدم بالفعل. جربي تسجيل الدخول."
+                        );
+
+                    }
+
+                    else if (
+                        error.code ===
+                        "auth/invalid-email"
+                    ) {
+
+                        alert(
+                            "البريد الإلكتروني غير صحيح."
+                        );
+
+                    }
+
+                    else if (
+                        error.code ===
+                        "auth/weak-password"
+                    ) {
+
+                        alert(
+                            "كلمة المرور ضعيفة. استخدمي كلمة مرور أقوى."
+                        );
+
+                    }
+
+                    else if (
+                        error.code ===
+                        "auth/network-request-failed"
+                    ) {
+
+                        alert(
+                            "حدثت مشكلة في الاتصال بالإنترنت. حاولي مرة أخرى."
+                        );
+
+                    }
+
+                    else {
+
+                        alert(
+                            "حدث خطأ أثناء إنشاء الحساب. افتحي Console لمعرفة التفاصيل."
+                        );
+
+                    }
+
+                }
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salma's Journey - الرئيسية</title>
+    <!-- خط Cairo و Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome الأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: rgba(18, 24, 38, 0.75);
+            --card-hover: rgba(30, 41, 59, 0.8);
+            --text-main: #ffffff;
+            --text-sub: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --primary-accent: #ec4899;
+            --secondary-accent: #8b5cf6;
+            --glow-1: rgba(236, 72, 153, 0.15);
+            --glow-2: rgba(139, 92, 246, 0.12);
+        }
+
+        [data-theme="light"] {
+            --bg-color: #f8fafc;
+            --card-bg: rgba(255, 255, 255, 0.85);
+            --card-hover: #ffffff;
+            --text-main: #0f172a;
+            --text-sub: #64748b;
+            --border-color: rgba(0, 0, 0, 0.08);
+            --glow-1: rgba(236, 72, 153, 0.08);
+            --glow-2: rgba(139, 92, 246, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', 'Poppins', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            padding: 1.5rem 1rem 3rem 1rem;
+            overflow-x: hidden;
+        }
+
+        /* توهج الخلفية */
+        .bg-glow-1 {
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, var(--glow-1) 0%, transparent 70%);
+            top: -100px;
+            right: 10%;
+            filter: blur(70px);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .bg-glow-2 {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--glow-2) 0%, transparent 70%);
+            bottom: 10%;
+            left: 10%;
+            filter: blur(70px);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* شريط الملاحة العلوي (Header) */
+        .top-navbar {
+            width: 100%;
+            max-width: 900px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 0.8rem 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            z-index: 10;
+            margin-bottom: 2rem;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 6px 14px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .user-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--primary-accent), var(--secondary-accent));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-size: 0.9rem;
+        }
+
+        .user-name {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .icon-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 1rem;
+            text-decoration: none;
+        }
+
+        .icon-btn:hover {
+            border-color: var(--primary-accent);
+            color: var(--primary-accent);
+        }
+
+        /* حاوية المحتوى الرئيسي */
+        .main-container {
+            width: 100%;
+            max-width: 900px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 28px;
+            padding: 2.5rem 2rem;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            z-index: 1;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .badge-pill {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(236, 72, 153, 0.1);
+            border: 1px solid rgba(236, 72, 153, 0.3);
+            border-radius: 50px;
+            color: var(--primary-accent);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin: 0 auto 1.2rem auto;
+            text-align: center;
+        }
+
+        .badge-wrapper {
+            text-align: center;
+        }
+
+        .hero-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-title span {
+            background: linear-gradient(135deg, var(--primary-accent), var(--secondary-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            text-align: center;
+            color: var(--text-sub);
+            font-size: 0.95rem;
+            margin-bottom: 2.5rem;
+        }
+
+        /* كروت المواد الدراسية */
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 480px) {
+            .subjects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .subject-card {
+            background: rgba(11, 15, 25, 0.5);
+            border: 1px solid var(--border-color);
+            border-radius: 18px;
+            padding: 1.2rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        [data-theme="light"] .subject-card {
+            background: rgba(241, 245, 249, 0.6);
+        }
+
+        .subject-card:hover {
+            background: var(--card-hover);
+            border-color: var(--primary-accent);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .subject-info h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+        }
+
+        .subject-info p {
+            font-size: 0.8rem;
+            color: var(--text-sub);
+        }
+
+        .subject-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.3rem;
+        }
+
+        /* ألوان الأيقونات */
+        .icon-code { background: rgba(139, 92, 246, 0.15); color: #a78bfa; }
+        .icon-english { background: rgba(59, 130, 246, 0.15); color: #60a5fa; }
+        .icon-history { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
+        .icon-arabic { background: rgba(16, 185, 129, 0.15); color: #34d399; }
+
+        .arrow-icon {
+            color: var(--text-sub);
+            font-size: 0.9rem;
+            margin-left: 10px;
+        }
+
+        /* كارت المقالات والنشريات (بتصميم مختلف كلياً) */
+        .news-card-unique {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(236, 72, 153, 0.1));
+            border: 1px solid rgba(139, 92, 246, 0.25);
+            border-radius: 20px;
+            padding: 1.8rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        [data-theme="light"] .news-card-unique {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.05), rgba(236, 72, 153, 0.05));
+        }
+
+        .news-unique-content {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        .news-unique-icon {
+            width: 55px;
+            height: 55px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--primary-accent), var(--secondary-accent));
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.4rem;
+            box-shadow: 0 8px 20px rgba(236, 72, 153, 0.25);
+        }
+
+        .news-unique-btn {
+            background: linear-gradient(135deg, var(--secondary-accent), var(--primary-accent));
+            color: white;
+            padding: 0.8rem 1.6rem;
+            border-radius: 14px;
+            border: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+        }
+
+        .news-unique-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 22px rgba(236, 72, 153, 0.4);
+        }
+
+        /* أيقونة واتساب العائمة */
+        .floating-btn {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            z-index: 99;
+            width: 55px;
+            height: 55px;
+            background: #25d366;
+            color: #ffffff;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.6rem;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+        }
+
+        .floating-btn:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.6);
+        }
+
+        .developer-footer {
+            margin-top: 2.5rem;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.85rem;
+            color: var(--text-sub);
+            z-index: 1;
+        }
+
+        .developer-footer span {
+            color: var(--primary-accent);
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-glow-1"></div>
+    <div class="bg-glow-2"></div>
+
+    <!-- زر واتساب العائم -->
+    <a href="https://wa.me/201000000000" target="_blank" class="floating-btn" title="تواصل عبر WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- شريط الملاحة العلوي -->
+    <header class="top-navbar">
+        <div class="user-profile">
+            <div class="user-avatar">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <span class="user-name">Salma Ashraf</span>
+        </div>
+
+        <div class="nav-actions">
+            <a href="articles.html" class="icon-btn" title="المقالات"><i class="fa-regular fa-newspaper"></i></a>
+            <button class="icon-btn" onclick="toggleTheme()" title="تغيير المظهر">
+                <i class="fa-solid fa-moon" id="theme-icon"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- المحتوى الرئيسي -->
+    <main class="main-container">
+        <div class="badge-wrapper">
+            <span class="badge-pill">البكالوريا مع منصة Salma's Journey</span>
+        </div>
+
+        <h1 class="hero-title">
+            استكشف تجربة التعلم<br>
+            <span>التفاعلية الذكية</span>
+        </h1>
+        <p class="hero-subtitle">اختر المادة العلمية للانتقال المباشر للوحدات بأسلوب عرض سلس.</p>
+
+        <!-- شبكة المواد -->
+        <div class="subjects-grid">
+            <!-- كارت البرمجة والذكاء الاصطناعي -->
+            <a href="ai-programming.html" class="subject-card">
+                <div style="display: flex; align-items: center;">
+                    <i class="fa-solid fa-arrow-right arrow-icon"></i>
+                    <div class="subject-info">
+                        <h3>البرمجة والذكاء الاصطناعي</h3>
+                        <p>AI & Programming</p>
+                    </div>
+                </div>
+                <div class="subject-icon icon-code">
+                    <i class="fa-solid fa-code"></i>
+                </div>
+            </a>
+
+            <!-- كارت الإنجليزية -->
+            <a href="english.html" class="subject-card">
+                <div style="display: flex; align-items: center;">
+                    <i class="fa-solid fa-arrow-right arrow-icon"></i>
+                    <div class="subject-info">
+                        <h3>الإنجليزيّة</h3>
+                        <p>English Language</p>
+                    </div>
+                </div>
+                <div class="subject-icon icon-english">
+                    <i class="fa-solid fa-language"></i>
+                </div>
+            </a>
+
+            <!-- كارت التاريخ -->
+            <a href="history.html" class="subject-card">
+                <div style="display: flex; align-items: center;">
+                    <i class="fa-solid fa-arrow-right arrow-icon"></i>
+                    <div class="subject-info">
+                        <h3>التاريخ</h3>
+                        <p>History Studies</p>
+                    </div>
+                </div>
+                <div class="subject-icon icon-history">
+                    <i class="fa-solid fa-landmark"></i>
+                </div>
+            </a>
+
+            <!-- كارت اللغة العربية -->
+            <a href="arabic.html" class="subject-card">
+                <div style="display: flex; align-items: center;">
+                    <i class="fa-solid fa-arrow-right arrow-icon"></i>
+                    <div class="subject-info">
+                        <h3>اللغة العربية</h3>
+                        <p>Arabic Literature</p>
+                    </div>
+                </div>
+                <div class="subject-icon icon-arabic">
+                    <i class="fa-solid fa-book-quran"></i>
+                </div>
+            </a>
+        </div>
+
+        <!-- قسم المقالات والنشريات المميز والمختلف -->
+        <div class="news-card-unique">
+            <div class="news-unique-content">
+                <div class="news-unique-icon">
+                    <i class="fa-solid fa-pen-nib"></i>
+                </div>
+                <div>
+                    <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.3rem;">«بين العلم والعبادة… نبني طالبًا ناجحًا في الدنيا والآخرة.»</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-sub);">مقالات حصرية ومقالات إرشادية لدعم مسيرتك الدراسية والدينية.</p>
+                </div>
+            </div>
+            <a href="articles.html" class="news-unique-btn">
+                <i class="fa-solid fa-arrow-left"></i>
+                استعراض المقالات
+            </a>
+        </div>
+    </main>
+
+    <!-- توقيع التطوير -->
+    <div class="developer-footer">
+        Developed by <span>Eng. Salma Ashraf Ghorieb</span>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.getElementById('theme-icon');
+            
+            if (body.getAttribute('data-theme') === 'light') {
+                body.removeAttribute('data-theme');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            } else {
+                body.setAttribute('data-theme', 'light');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+        }
+    </script>
+</body>
+</html>

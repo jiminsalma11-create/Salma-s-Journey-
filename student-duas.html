@@ -1,0 +1,1494 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Salma's Journey - أدعية للطالب</title>
+
+    <!-- الخطوط -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Poppins:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+
+        :root {
+            --bg-color: #f5f9ff;
+            --card-bg: rgba(255, 255, 255, 0.94);
+            --card-hover: #ffffff;
+
+            --text-main: #17324d;
+            --text-body: #263849;
+            --text-sub: #60758a;
+
+            --primary-accent: #4f7cac;
+            --secondary-accent: #7c9fc6;
+
+            --border-color: rgba(79, 124, 172, 0.16);
+
+            --glow-1: rgba(79, 124, 172, 0.13);
+            --glow-2: rgba(124, 159, 198, 0.12);
+        }
+
+
+        /* =========================
+           Dark Mode
+        ========================== */
+
+        [data-theme="dark"] {
+
+            --bg-color: #0b1621;
+
+            --card-bg: rgba(20, 34, 48, 0.92);
+
+            --card-hover: rgba(27, 45, 62, 0.98);
+
+            --text-main: #eaf4ff;
+
+            --text-body: #d9e5f0;
+
+            --text-sub: #9eb0c1;
+
+            --primary-accent: #8bb7df;
+
+            --secondary-accent: #a8c6e2;
+
+            --border-color: rgba(139, 183, 223, 0.2);
+
+            --glow-1: rgba(79, 124, 172, 0.18);
+
+            --glow-2: rgba(168, 198, 226, 0.12);
+        }
+
+
+        /* =========================
+           General
+        ========================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+            font-family: 'Cairo', 'Poppins', sans-serif;
+
+            transition:
+                background-color 0.3s ease,
+                color 0.3s ease,
+                border-color 0.3s ease;
+        }
+
+
+        body {
+
+            background-color: var(--bg-color);
+
+            color: var(--text-body);
+
+            min-height: 100vh;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            position: relative;
+
+            padding: 1.5rem 1rem 3rem;
+
+            overflow-x: hidden;
+        }
+
+
+        /* =========================
+           Background Glow
+        ========================== */
+
+        .bg-glow-1 {
+
+            position: absolute;
+
+            width: 500px;
+
+            height: 500px;
+
+            background:
+                radial-gradient(
+                    circle,
+                    var(--glow-1) 0%,
+                    transparent 70%
+                );
+
+            top: -120px;
+
+            right: 5%;
+
+            filter: blur(80px);
+
+            z-index: 0;
+
+            pointer-events: none;
+        }
+
+
+        .bg-glow-2 {
+
+            position: absolute;
+
+            width: 450px;
+
+            height: 450px;
+
+            background:
+                radial-gradient(
+                    circle,
+                    var(--glow-2) 0%,
+                    transparent 70%
+                );
+
+            bottom: 5%;
+
+            left: 5%;
+
+            filter: blur(80px);
+
+            z-index: 0;
+
+            pointer-events: none;
+        }
+
+
+        /* =========================
+           Navbar
+        ========================== */
+
+        .top-navbar {
+
+            width: 100%;
+
+            max-width: 900px;
+
+            background: var(--card-bg);
+
+            border: 1px solid var(--border-color);
+
+            border-radius: 20px;
+
+            padding: 0.8rem 1.2rem;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            backdrop-filter: blur(16px);
+
+            z-index: 10;
+
+            margin-bottom: 2rem;
+
+            box-shadow:
+                0 10px 30px rgba(30, 60, 90, 0.05);
+        }
+
+
+        .back-btn {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            color: var(--text-main);
+
+            text-decoration: none;
+
+            font-weight: 700;
+
+            font-size: 0.9rem;
+
+            background:
+                rgba(79, 124, 172, 0.08);
+
+            padding: 6px 16px;
+
+            border-radius: 12px;
+
+            border: 1px solid var(--border-color);
+        }
+
+
+        .back-btn:hover {
+
+            border-color: var(--primary-accent);
+
+            color: var(--primary-accent);
+
+            transform: translateX(2px);
+        }
+
+
+        /* =========================
+           Theme Button
+        ========================== */
+
+        .icon-btn {
+
+            background:
+                rgba(79, 124, 172, 0.08);
+
+            border: 1px solid var(--border-color);
+
+            color: var(--text-main);
+
+            width: 40px;
+
+            height: 40px;
+
+            border-radius: 12px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            cursor: pointer;
+
+            font-size: 1.05rem;
+        }
+
+
+        .icon-btn:hover {
+
+            border-color: var(--primary-accent);
+
+            color: var(--primary-accent);
+
+            transform: rotate(8deg);
+        }
+
+
+        /* =========================
+           Main Container
+        ========================== */
+
+        .main-container {
+
+            width: 100%;
+
+            max-width: 900px;
+
+            background: var(--card-bg);
+
+            border: 1px solid var(--border-color);
+
+            border-radius: 28px;
+
+            padding: 2.5rem 2rem;
+
+            backdrop-filter: blur(16px);
+
+            z-index: 1;
+
+            box-shadow:
+                0 20px 40px rgba(30, 60, 90, 0.07);
+        }
+
+
+        /* =========================
+           Badge
+        ========================== */
+
+        .badge-pill {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding: 6px 18px;
+
+            background:
+                rgba(79, 124, 172, 0.09);
+
+            border:
+                1px solid rgba(79, 124, 172, 0.22);
+
+            border-radius: 50px;
+
+            color: var(--primary-accent);
+
+            font-size: 0.88rem;
+
+            font-weight: 700;
+
+            margin-bottom: 1.2rem;
+        }
+
+
+        /* =========================
+           Title
+        ========================== */
+
+        .hero-title {
+
+            font-size: 2.2rem;
+
+            font-weight: 800;
+
+            line-height: 1.3;
+
+            margin-bottom: 0.5rem;
+
+            color: var(--text-main);
+        }
+
+
+        .hero-title span {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--primary-accent),
+                    var(--secondary-accent)
+                );
+
+            -webkit-background-clip: text;
+
+            -webkit-text-fill-color: transparent;
+        }
+
+
+        .hero-subtitle {
+
+            color: var(--text-sub);
+
+            font-size: 0.98rem;
+
+            margin-bottom: 2rem;
+
+            line-height: 1.8;
+        }
+
+
+        /* =========================
+           Cards Grid
+        ========================== */
+
+        .cards-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(380px, 1fr)
+                );
+
+            gap: 1.5rem;
+        }
+
+
+        @media (max-width: 480px) {
+
+            .cards-grid {
+
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        /* =========================
+           Cards
+        ========================== */
+
+        .tip-card {
+
+            background: var(--bg-color);
+
+            border:
+                1px solid var(--border-color);
+
+            border-radius: 22px;
+
+            padding: 1.8rem;
+
+            cursor: pointer;
+
+            transition: all 0.3s ease;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: space-between;
+
+            min-height: 220px;
+        }
+
+
+        .tip-card:hover {
+
+            border-color:
+                var(--primary-accent);
+
+            transform:
+                translateY(-5px);
+
+            box-shadow:
+                0 14px 30px
+                rgba(79, 124, 172, 0.13);
+
+            background:
+                var(--card-hover);
+        }
+
+
+        .tip-card h3 {
+
+            font-size: 1.18rem;
+
+            font-weight: 700;
+
+            margin-bottom: 0.8rem;
+
+            color: var(--text-main);
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            line-height: 1.7;
+        }
+
+
+        .tip-card p {
+
+            font-size: 0.9rem;
+
+            color: var(--text-sub);
+
+            line-height: 1.8;
+
+            margin-bottom: 1.2rem;
+        }
+
+
+        .card-action {
+
+            font-size: 0.88rem;
+
+            font-weight: 700;
+
+            color: var(--primary-accent);
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 6px;
+        }
+
+
+        .card-action i {
+
+            transition:
+                transform 0.3s ease;
+        }
+
+
+        .tip-card:hover
+        .card-action i {
+
+            transform:
+                translateX(-5px);
+        }
+
+
+        /* =========================
+           Modal
+        ========================== */
+
+        .modal-overlay {
+
+            position: fixed;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            background:
+                rgba(10, 25, 40, 0.62);
+
+            backdrop-filter: blur(7px);
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            z-index: 1000;
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            transition:
+                all 0.3s ease;
+
+            padding: 1rem;
+        }
+
+
+        .modal-overlay.active {
+
+            opacity: 1;
+
+            visibility: visible;
+        }
+
+
+        .modal-content {
+
+            background: var(--card-bg);
+
+            border:
+                1px solid var(--border-color);
+
+            border-radius: 26px;
+
+            width: 100%;
+
+            max-width: 680px;
+
+            max-height: 85vh;
+
+            overflow-y: auto;
+
+            padding: 2.2rem;
+
+            position: relative;
+
+            box-shadow:
+                0 25px 50px
+                rgba(0,0,0,0.2);
+
+            transform:
+                scale(0.9);
+
+            transition:
+                transform 0.3s ease;
+        }
+
+
+        .modal-overlay.active
+        .modal-content {
+
+            transform:
+                scale(1);
+        }
+
+
+        /* =========================
+           Close Button
+        ========================== */
+
+        .close-modal {
+
+            position: absolute;
+
+            top: 1.2rem;
+
+            left: 1.2rem;
+
+            background:
+                rgba(79, 124, 172, 0.10);
+
+            color:
+                var(--primary-accent);
+
+            border: none;
+
+            width: 36px;
+
+            height: 36px;
+
+            border-radius: 50%;
+
+            cursor: pointer;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            font-size: 1rem;
+        }
+
+
+        .close-modal:hover {
+
+            background:
+                var(--primary-accent);
+
+            color: #fff;
+        }
+
+
+        /* =========================
+           Modal Title
+        ========================== */
+
+        .modal-title {
+
+            font-size: 1.4rem;
+
+            font-weight: 800;
+
+            margin-bottom: 1.2rem;
+
+            color:
+                var(--primary-accent);
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            padding-left: 35px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           Modal Body
+        ========================== */
+
+        .modal-body {
+
+            font-size: 1rem;
+
+            color:
+                var(--text-body);
+
+            line-height: 2.15;
+
+            white-space: pre-line;
+        }
+
+
+        /* =========================
+           Footer
+        ========================== */
+
+        .developer-footer {
+
+            margin-top: 2.5rem;
+
+            text-align: center;
+
+            font-family: 'Poppins', sans-serif;
+
+            font-size: 0.85rem;
+
+            color:
+                var(--text-sub);
+
+            z-index: 1;
+        }
+
+
+        .developer-footer span {
+
+            color:
+                var(--primary-accent);
+
+            font-weight: 600;
+        }
+
+
+        /* =========================
+           Mobile
+        ========================== */
+
+        @media (max-width: 600px) {
+
+            body {
+
+                padding:
+                    1rem 0.8rem 2rem;
+            }
+
+
+            .main-container {
+
+                padding:
+                    1.7rem 1rem;
+
+                border-radius:
+                    22px;
+            }
+
+
+            .hero-title {
+
+                font-size:
+                    1.75rem;
+            }
+
+
+            .hero-subtitle {
+
+                font-size:
+                    0.9rem;
+            }
+
+
+            .cards-grid {
+
+                gap:
+                    1rem;
+            }
+
+
+            .tip-card {
+
+                padding:
+                    1.4rem;
+
+                min-height:
+                    200px;
+            }
+
+
+            .tip-card h3 {
+
+                font-size:
+                    1.05rem;
+            }
+
+
+            .modal-content {
+
+                padding:
+                    1.7rem 1.3rem;
+
+                border-radius:
+                    22px;
+            }
+
+
+            .modal-title {
+
+                font-size:
+                    1.2rem;
+            }
+
+
+            .modal-body {
+
+                font-size:
+                    0.93rem;
+
+                line-height:
+                    2;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <!-- الخلفية -->
+
+    <div class="bg-glow-1"></div>
+    <div class="bg-glow-2"></div>
+
+
+    <!-- =========================
+         Navbar
+    ========================== -->
+
+    <header class="top-navbar">
+
+        <a href="articles.html" class="back-btn">
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+            المقالات
+
+        </a>
+
+
+        <button
+            class="icon-btn"
+            onclick="toggleTheme()"
+            title="تغيير المظهر">
+
+            <i
+                class="fa-solid fa-moon"
+                id="theme-icon">
+            </i>
+
+        </button>
+
+    </header>
+
+
+    <!-- =========================
+         Main
+    ========================== -->
+
+    <main class="main-container">
+
+
+        <div class="badge-pill">
+
+            <i class="fa-solid fa-hands-praying"></i>
+
+            أدعية للطالب
+
+        </div>
+
+
+        <h1 class="hero-title">
+
+            أدعية <span>تمنحك السكينة والتوفيق</span>
+
+        </h1>
+
+
+        <p class="hero-subtitle">
+
+            أدعية جميلة تساعد الطالب على الاستعانة بالله،
+            وطلب العلم والتيسير والطمأنينة والبركة في الوقت والجهد.
+
+        </p>
+
+
+        <!-- =========================
+             Cards
+        ========================== -->
+
+        <div class="cards-grid">
+
+
+            <!-- Card 1 -->
+
+            <div
+                class="tip-card"
+                onclick="openModal('modal-1')">
+
+                <div>
+
+                    <h3>
+                        📝 دعاء قبل الامتحان
+                    </h3>
+
+                    <p>
+                        دعاء يساعد الطالب على الهدوء وطلب التوفيق والتيسير قبل دخول الامتحان.
+                    </p>
+
+                </div>
+
+
+                <div class="card-action">
+
+                    اقرأ الدعاء
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                </div>
+
+            </div>
+
+
+            <!-- Card 2 -->
+
+            <div
+                class="tip-card"
+                onclick="openModal('modal-2')">
+
+                <div>
+
+                    <h3>
+                        🤍 دعاء لراحة القلب وطمأنينة النفس
+                    </h3>
+
+                    <p>
+                        دعاء عند الشعور بالضغط أو الخوف أو القلق من الدراسة والامتحانات.
+                    </p>
+
+                </div>
+
+
+                <div class="card-action">
+
+                    اقرأ الدعاء
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                </div>
+
+            </div>
+
+
+            <!-- Card 3 -->
+
+            <div
+                class="tip-card"
+                onclick="openModal('modal-3')">
+
+                <div>
+
+                    <h3>
+                        📖 دعاء لزيادة العلم والفهم
+                    </h3>
+
+                    <p>
+                        أدعية جميلة لطلب العلم النافع والفهم والاستفادة مما نتعلمه.
+                    </p>
+
+                </div>
+
+
+                <div class="card-action">
+
+                    اقرأ الدعاء
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                </div>
+
+            </div>
+
+
+            <!-- Card 4 -->
+
+            <div
+                class="tip-card"
+                onclick="openModal('modal-4')">
+
+                <div>
+
+                    <h3>
+                        ⏰ دعاء للبركة في الوقت
+                    </h3>
+
+                    <p>
+                        دعاء لطلب البركة في الوقت والجهد والدراسة والاستفادة من كل يوم.
+                    </p>
+
+                </div>
+
+
+                <div class="card-action">
+
+                    اقرأ الدعاء
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                </div>
+
+            </div>
+
+
+            <!-- Card 5 -->
+
+            <div
+                class="tip-card"
+                onclick="openModal('modal-5')">
+
+                <div>
+
+                    <h3>
+                        🌙 دعاء عند الشعور بالقلق
+                    </h3>
+
+                    <p>
+                        دعاء عند الشعور بالقلق أو الخوف، مع التذكير بالهدوء والتوكل على الله.
+                    </p>
+
+                </div>
+
+
+                <div class="card-action">
+
+                    اقرأ الدعاء
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+
+    <!-- ==================================================
+         MODALS
+    =================================================== -->
+
+
+    <!-- Modal 1 -->
+
+    <div
+        class="modal-overlay"
+        id="modal-1">
+
+        <div class="modal-content">
+
+
+            <button
+                class="close-modal"
+                onclick="closeModal('modal-1')">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+
+            <h2 class="modal-title">
+
+                📝 دعاء قبل الامتحان
+
+            </h2>
+
+
+            <div class="modal-body">
+
+قبل الامتحان قد يشعر الطالب بالتوتر أو الخوف، لذلك يمكنه أن يهدأ ويستعين بالله ويدعوه بالتوفيق والتيسير.
+
+🤲 من الدعاء:
+
+«اللهم يسّر لي أمري، واشرح لي صدري، ووفّقني في امتحاني، وذكّرني ما نسيت، وعلّمني ما جهلت.»
+
+📖 ومن القرآن:
+
+﴿رَبِّ اشْرَحْ لِي صَدْرِي ۝ وَيَسِّرْ لِي أَمْرِي﴾
+
+[طه: 25-26]
+
+🌿 تذكير:
+
+الدعاء مع المذاكرة والاجتهاد؛ خذ بالأسباب، وادخل امتحانك بهدوء وثقة، ثم توكل على الله.
+
+✨ رسالة:
+
+بذلت ما تستطيع، والآن اطمئن وابذل أفضل ما عندك. 🤍
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Modal 2 -->
+
+    <div
+        class="modal-overlay"
+        id="modal-2">
+
+        <div class="modal-content">
+
+
+            <button
+                class="close-modal"
+                onclick="closeModal('modal-2')">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+
+            <h2 class="modal-title">
+
+                🤍 دعاء لراحة القلب وطمأنينة النفس
+
+            </h2>
+
+
+            <div class="modal-body">
+
+قد تمر على الطالب أوقات يشعر فيها بالضغط أو الخوف من الدراسة والامتحانات، وفي هذه الأوقات يمكنه أن يلجأ إلى الله ويدعوه بقلبٍ مطمئن.
+
+🤲 من الدعاء:
+
+«اللهم اشرح صدري، ويسّر أمري، وطمئن قلبي، واصرف عني الهم والقلق، وارزقني السكينة والراحة.»
+
+📖 قال الله تعالى:
+
+﴿أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ﴾
+
+[الرعد: 28]
+
+🌿 تذكير:
+
+عندما تشعر بالضغط، خذ وقتًا للهدوء والذكر والدعاء، ثم عد إلى ما تستطيع فعله خطوةً بخطوة.
+
+✨ رسالة:
+
+اطمئن، وابذل جهدك، واستعن بالله، ولا تحمل نفسك أكثر مما تستطيع.
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Modal 3 -->
+
+    <div
+        class="modal-overlay"
+        id="modal-3">
+
+        <div class="modal-content">
+
+
+            <button
+                class="close-modal"
+                onclick="closeModal('modal-3')">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+
+            <h2 class="modal-title">
+
+                📖 دعاء لزيادة العلم والفهم
+
+            </h2>
+
+
+            <div class="modal-body">
+
+العلم نعمة عظيمة، ومن الجميل أن يبدأ الطالب مذاكرته بالاستعانة بالله وطلب العلم النافع.
+
+🤲 قال الله تعالى:
+
+﴿وَقُلْ رَبِّ زِدْنِي عِلْمًا﴾
+
+[طه: 114]
+
+وهذا من أجمل الأدعية التي يمكن للطالب أن يكررها، سائلًا الله أن يزيده علمًا وفهمًا وينفعه بما يتعلم.
+
+🌱 ويمكنك أن تدعو أيضًا:
+
+«اللهم علّمني ما ينفعني، وانفعني بما علّمتني، وزدني علمًا وفهمًا.»
+
+📚 تذكير:
+
+الدعاء مع الأخذ بالأسباب؛ فاجتهد في المذاكرة، وحاول أن تفهم ما تتعلمه، وراجع معلوماتك باستمرار.
+
+✨ رسالة:
+
+اطلب العلم بنية صالحة، واجتهد في طريقك، ولا تستصغر أي خطوة تتعلم منها شيئًا جديدًا.
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Modal 4 -->
+
+    <div
+        class="modal-overlay"
+        id="modal-4">
+
+        <div class="modal-content">
+
+
+            <button
+                class="close-modal"
+                onclick="closeModal('modal-4')">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+
+            <h2 class="modal-title">
+
+                ⏰ دعاء للبركة في الوقت
+
+            </h2>
+
+
+            <div class="modal-body">
+
+الوقت من أعظم النعم، والطالب يحتاج أن يستفيد من وقته في الدراسة والعبادة والراحة، لذلك يمكنه أن يدعو الله أن يبارك له في يومه وجهده.
+
+🤲 الدعاء:
+
+«اللهم بارك لي في وقتي، وأعنّي على استغلاله فيما ينفعني، ووفّقني في دراستي، وبارك لي في علمي وجهدي.»
+
+📖 ومن الدعاء الجميل:
+
+«رَبِّ أَوْزِعْنِي أَنْ أَشْكُرَ نِعْمَتَكَ»
+
+[النمل: 19]
+
+🌱 تذكير:
+
+البركة في الوقت لا تعني أن يصبح اليوم أطول، بل أن تستفيد من وقتك فيما ينفعك.
+
+⭐ رسالة:
+
+نظّم وقتك، ابتعد عن التسويف، واستعن بالله في كل خطوة.
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Modal 5 -->
+
+    <div
+        class="modal-overlay"
+        id="modal-5">
+
+        <div class="modal-content">
+
+
+            <button
+                class="close-modal"
+                onclick="closeModal('modal-5')">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+
+            <h2 class="modal-title">
+
+                🌙 دعاء عند الشعور بالقلق
+
+            </h2>
+
+
+            <div class="modal-body">
+
+عندما تشعر بالقلق أو الخوف، خذ لحظة هدوء، واستعن بالله، وادعُ بما في قلبك.
+
+🤲 من الدعاء:
+
+«اللهم إني أعوذ بك من الهم والحَزَن، وأعوذ بك من العجز والكسل.»
+
+ويمكنك أيضًا أن تقول:
+
+«اللهم اشرح صدري، ويسّر أمري، وطمئن قلبي، ووفّقني لما تحب وترضى.»
+
+📖 قال الله تعالى:
+
+﴿أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ﴾
+
+[الرعد: 28]
+
+🌿 تذكير:
+
+خذ بالأسباب، ذاكر قدر استطاعتك، ثم توكل على الله، ولا تحمل نفسك فوق طاقتها.
+
+🤍 رسالة:
+
+ليس مطلوبًا منك أن تعرف كل ما سيحدث في المستقبل؛ يكفي أن تبذل جهدك اليوم وتستعين بالله.
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         Footer
+    ========================== -->
+
+    <div class="developer-footer">
+
+        Developed by
+        <span>
+            Eng. Salma Ashraf Ghorieb
+        </span>
+
+    </div>
+
+
+    <!-- =========================
+         JavaScript
+    ========================== -->
+
+    <script>
+
+
+        /* =========================
+           Dark / Light Mode
+        ========================== */
+
+        function toggleTheme() {
+
+            const body =
+                document.body;
+
+            const icon =
+                document.getElementById(
+                    "theme-icon"
+                );
+
+
+            if (
+                body.getAttribute(
+                    "data-theme"
+                ) === "dark"
+            ) {
+
+                body.removeAttribute(
+                    "data-theme"
+                );
+
+                icon.classList.remove(
+                    "fa-sun"
+                );
+
+                icon.classList.add(
+                    "fa-moon"
+                );
+
+            }
+
+            else {
+
+                body.setAttribute(
+                    "data-theme",
+                    "dark"
+                );
+
+                icon.classList.remove(
+                    "fa-moon"
+                );
+
+                icon.classList.add(
+                    "fa-sun"
+                );
+
+            }
+
+        }
+
+
+        /* =========================
+           Open Modal
+        ========================== */
+
+        function openModal(modalId) {
+
+            document
+                .getElementById(modalId)
+                .classList.add("active");
+
+        }
+
+
+        /* =========================
+           Close Modal
+        ========================== */
+
+        function closeModal(modalId) {
+
+            document
+                .getElementById(modalId)
+                .classList.remove("active");
+
+        }
+
+
+        /* =========================
+           Close By Clicking Outside
+        ========================== */
+
+        window.onclick =
+            function(event) {
+
+                if (
+                    event.target.classList
+                        .contains("modal-overlay")
+                ) {
+
+                    event.target
+                        .classList
+                        .remove("active");
+
+                }
+
+            };
+
+
+        /* =========================
+           Close With ESC
+        ========================== */
+
+        document.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (
+                    event.key === "Escape"
+                ) {
+
+                    document
+                        .querySelectorAll(
+                            ".modal-overlay.active"
+                        )
+                        .forEach(
+                            modal => {
+
+                                modal.classList
+                                    .remove("active");
+
+                            }
+                        );
+
+                }
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>

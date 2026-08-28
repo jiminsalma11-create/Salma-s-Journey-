@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salma's Journey - نصائح للمذاكرة</title>
+    <!-- خط Cairo و Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome الأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #f8fafc;
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --card-hover: #ffffff;
+            --text-main: #0f172a;
+            --text-sub: #64748b;
+            --border-color: rgba(0, 0, 0, 0.08);
+            --primary-accent: #8b5cf6;
+            --secondary-accent: #ec4899;
+            --glow-1: rgba(139, 92, 246, 0.08);
+            --glow-2: rgba(236, 72, 153, 0.08);
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #0b0f19;
+            --card-bg: rgba(18, 24, 38, 0.85);
+            --card-hover: rgba(30, 41, 59, 0.9);
+            --text-main: #ffffff;
+            --text-sub: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --glow-1: rgba(139, 92, 246, 0.15);
+            --glow-2: rgba(236, 72, 153, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', 'Poppins', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            padding: 1.5rem 1rem 3rem 1rem;
+            overflow-x: hidden;
+        }
+
+        /* توهج الخلفية */
+        .bg-glow-1 {
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, var(--glow-1) 0%, transparent 70%);
+            top: -100px;
+            right: 10%;
+            filter: blur(70px);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .bg-glow-2 {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--glow-2) 0%, transparent 70%);
+            bottom: 10%;
+            left: 10%;
+            filter: blur(70px);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* شريط الملاحة */
+        .top-navbar {
+            width: 100%;
+            max-width: 900px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 0.8rem 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(16px);
+            z-index: 10;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            background: rgba(139, 92, 246, 0.08);
+            padding: 6px 14px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .back-btn:hover {
+            border-color: var(--primary-accent);
+            color: var(--primary-accent);
+        }
+
+        .icon-btn {
+            background: rgba(139, 92, 246, 0.08);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .icon-btn:hover {
+            border-color: var(--primary-accent);
+            color: var(--primary-accent);
+        }
+
+        /* الحاوية الرئيسية */
+        .main-container {
+            width: 100%;
+            max-width: 900px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 28px;
+            padding: 2.5rem 2rem;
+            backdrop-filter: blur(16px);
+            z-index: 1;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .badge-pill {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(139, 92, 246, 0.12);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 50px;
+            color: var(--primary-accent);
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-title span {
+            background: linear-gradient(135deg, var(--primary-accent), var(--secondary-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            color: var(--text-sub);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+        }
+
+        /* شبكة الكروت */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 480px) {
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .tip-card {
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 1.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .tip-card:hover {
+            border-color: var(--primary-accent);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(139, 92, 246, 0.15);
+            background: var(--card-hover);
+        }
+
+        .tip-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tip-card p {
+            font-size: 0.88rem;
+            color: var(--text-sub);
+            line-height: 1.6;
+            margin-bottom: 1.2rem;
+        }
+
+        .card-action {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--primary-accent);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* صندوق عرض المحتوى التفصيلي (مودال / Modal) */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            padding: 1rem;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            width: 100%;
+            max-width: 650px;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 2rem;
+            position: relative;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1.2rem;
+            left: 1.2rem;
+            background: rgba(236, 72, 153, 0.1);
+            color: var(--secondary-accent);
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1rem;
+        }
+
+        .close-modal:hover {
+            background: var(--secondary-accent);
+            color: #fff;
+        }
+
+        .modal-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 1.2rem;
+            color: var(--primary-accent);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .modal-body {
+            font-size: 0.98rem;
+            color: var(--text-main);
+            line-height: 1.9;
+            white-space: pre-line;
+        }
+
+        .developer-footer {
+            margin-top: 2.5rem;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.85rem;
+            color: var(--text-sub);
+            z-index: 1;
+        }
+
+        .developer-footer span {
+            color: var(--primary-accent);
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-glow-1"></div>
+    <div class="bg-glow-2"></div>
+
+    <!-- شريط الملاحة -->
+    <header class="top-navbar">
+        <a href="articles.html" class="back-btn">
+            <i class="fa-solid fa-arrow-right"></i>
+            المقالات
+        </a>
+        <button class="icon-btn" onclick="toggleTheme()" title="تغيير المظهر">
+            <i class="fa-solid fa-moon" id="theme-icon"></i>
+        </button>
+    </header>
+
+    <!-- المحتوى الرئيسي -->
+    <main class="main-container">
+        <div class="badge-pill"><i class="fa-solid fa-graduation-cap"></i> زاوية التفوق والنجاح</div>
+        <h1 class="hero-title">نصائح <span>للمذاكرة الفعالة</span></h1>
+        <p class="hero-subtitle">خطوات ودليلك الشامل لترتيب أفكارك، رفع مستواك، والمذاكرة بذكاء وهدوء.</p>
+
+        <!-- كروت النصائح الستة -->
+        <div class="cards-grid">
+            
+            <!-- الكارت 1 -->
+            <div class="tip-card" onclick="openModal('modal-1')">
+                <div>
+                    <h3>📖 طريقة مذاكرة الدرس من البداية للنهاية</h3>
+                    <p>عشان تذاكر الدرس بشكل منظم وتستفيد منه، اعرف الخطوات الأساسية من النظرة السريعة وحتى التثبيت والفهم.</p>
+                </div>
+                <div class="card-action">اقرأ التفاصيل <i class="fa-solid fa-arrow-left"></i></div>
+            </div>
+
+            <!-- الكارت 2 -->
+            <div class="tip-card" onclick="openModal('modal-2')">
+                <div>
+                    <h3>🎯 كيف تركز بدون تشتت؟</h3>
+                    <p>التركيز مش بمعناه المذاكرة لساعات طويلة بدون توقف، لكن بمعناه استغلال الوقت بأفضل شكل ممكن والابتعاد عن المشتتات.</p>
+                </div>
+                <div class="card-action">اقرأ التفاصيل <i class="fa-solid fa-arrow-left"></i></div>
+            </div>
+
+            <!-- الكارت 3 -->
+            <div class="tip-card" onclick="openModal('modal-3')">
+                <div>
+                    <h3>😴 أهمية النوم والراحة أثناء المذاكرة</h3>
+                    <p>المذاكرة لفطرات طويلة بدون راحة لا تعني الإنجاز الأفضل؛ العقل والجسم بحاجة للراحة لتستمر بتركيز.</p>
+                </div>
+                <div class="card-action">اقرأ التفاصيل <i class="fa-solid fa-arrow-left"></i></div>
+            </div>
+
+            <!-- الكارت 4 -->
+            <div class="tip-card" onclick="openModal('modal-4')">
+                <div>
+                    <h3>🚫 أخطاء تجنبها أثناء المذاكرة</h3>
+                    <p>أخطاء بسيطة قد تقلل استفادتك من وقتك، تعرف عليها لتتجنبها قدر الإمكان وتحقق أعلى إنتاجية.</p>
+                </div>
+                <div class="card-action">اقرأ التفاصيل <i class="fa-solid fa-arrow-left"></i></div>
+            </div>
+
+            <!-- الكارت 5 -->
+            <div class="tip-card" onclick="openModal('modal-5')">
+                <div>
+                    <h3>⏰ كيف تنظم وقت المذاكرة؟</h3>
+                    <p>تنظيم الوقت يعني أن تعرف متى تذاكر ومتى ترتاح بدون ضغط نفسي زائد يقلل من حماستك واستمرارك.</p>
+                </div>
+                <div class="card-action">اقرأ التفاصيل <i class="fa-solid fa-arrow-left"></i></div>
+            </div>
+
+            <!-- الكارت 6 -->
+            <div class="tip-card" onclick="openModal('modal-6')">
+                <div>
+                    <h3>🧠 كيف تثبت المعلومات بسرعة؟</h3>
+                    <p>طرق واستراتيجيات صحيحة تساعد عقلك على الاحتفاظ بالمعلومات واسترجاعها بسهولة تامة وقت الامتحانات.</p>
+                </div>
+                <div class="card-action">اقرأ التفاصيل <i class="fa-solid fa-arrow-left"></i></div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- نوافذ عرض التفاصيل (Modals) -->
+
+    <!-- Modal 1 -->
+    <div class="modal-overlay" id="modal-1">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('modal-1')"><i class="fa-solid fa-xmark"></i></button>
+            <h2 class="modal-title">📖 طريقة مذاكرة الدرس من البداية للنهاية</h2>
+            <div class="modal-body">عشان تذاكر الدرس بشكل منظم وتستفيد منه، امشِ بالخطوات دي:
+
+👀 1. خُد نظرة سريعة: اقرأ العناوين وشوف الدرس بيتكلم عن إيه قبل ما تبدأ بالتفصيل.
+
+🧠 2. افهم الدرس: اقرأ كل جزء بهدوء وحاول تفهم الفكرة بدل ما تحفظها مباشرة.
+
+📝 3. لخص أهم النقاط: اكتب الكلمات والأفكار المهمة بأسلوبك.
+
+🗣️ 4. اشرح لنفسك: بعد كل جزء، حاول تشرحه من غير ما تبص في الكتاب.
+
+❓ 5. اختبر نفسك: اسأل نفسك أسئلة عن الدرس وحاول تجاوب من الذاكرة.
+
+🔄 6. راجع: ارجع للنقاط اللي نسيتها، وبعدها اعمل مراجعة سريعة للدرس كله.
+
+⭐ وفي النهاية: لا تنتقل للدرس التالي قبل ما تكون فاهم الأفكار الأساسية، لأن الفهم الجيد هو أول خطوة في الحفظ والتذكر.</div>
+        </div>
+    </div>
+
+    <!-- Modal 2 -->
+    <div class="modal-overlay" id="modal-2">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('modal-2')"><i class="fa-solid fa-xmark"></i></button>
+            <h2 class="modal-title">🎯 كيف تركز بدون تشتت؟</h2>
+            <div class="modal-body">التركيز مش معناه إنك تذاكر لساعات من غير توقف، لكن إنك تستغل وقتك بأفضل شكل ممكن.
+
+📱 ابعد عن المشتتات: حط الهاتف بعيدًا واقفل الإشعارات وقت المذاكرة.
+
+🎯 حدد هدفك: قبل ما تبدأ، حدد جزءًا واضحًا عايز تخلصه.
+
+⏰ ذاكر على فترات: قسم المذاكرة إلى جلسات قصيرة، وبينها خُد راحة بسيطة.
+
+📚 ذاكر حاجة واحدة: متحاولش تذاكر أكتر من مادة في نفس الوقت.
+
+📝 اكتب ملاحظاتك: تدوين النقاط المهمة يساعدك تفضل متفاعل مع الدرس.
+
+🌱 اختار مكان مناسب: مكان هادئ ومرتب يساعدك تقلل مصادر التشتت.
+
+⭐ وتذكر: كل دقيقة بتركيز أفضل من وقت طويل وأنت مشتت.</div>
+        </div>
+    </div>
+
+    <!-- Modal 3 -->
+    <div class="modal-overlay" id="modal-3">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('modal-3')"><i class="fa-solid fa-xmark"></i></button>
+            <h2 class="modal-title">😴 أهمية النوم والراحة أثناء المذاكرة</h2>
+            <div class="modal-body">المذاكرة لفترات طويلة من غير راحة مش دايمًا معناها إنك هتنجز أكتر، لأن العقل والجسم محتاجين وقت للراحة عشان تقدر تكمل بتركيز.
+
+😴 النوم الكافي: بيساعدك تصحى بنشاط ويحافظ على قدرتك على التركيز والتعلم.
+
+🧠 راحة العقل: فترات الراحة القصيرة بين جلسات المذاكرة بتساعدك ترجع بتركيز أفضل.
+
+📚 جودة المذاكرة أهم من مدتها: ساعة بتركيز ممكن تكون أفضل من ساعات طويلة وأنت مشتت أو مرهق.
+
+⏰ نظّم يومك: حاول توازن بين المذاكرة، والنوم، والراحة، والأنشطة اليومية.
+
+💡 ما تضغطش على نفسك: لو حسيت إن تركيزك قل، خُد استراحة قصيرة وارجع كمل.
+
+⭐ وتذكر: الراحة مش تضييع للوقت… الراحة جزء من طريق النجاح.</div>
+        </div>
+    </div>
+
+    <!-- Modal 4 -->
+    <div class="modal-overlay" id="modal-4">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('modal-4')"><i class="fa-solid fa-xmark"></i></button>
+            <h2 class="modal-title">🚫 أخطاء تجنبها أثناء المذاكرة</h2>
+            <div class="modal-body">في حاجات بسيطة ممكن تقلل استفادتك من وقت المذاكرة، فحاول تجنبها قدر الإمكان:
+
+📱 استخدام الهاتف باستمرار: الإشعارات والتصفح ممكن يشتتوا تركيزك.
+
+📖 الحفظ بدون فهم: حاول تفهم المعلومة الأول، وبعدها ابدأ في تثبيتها.
+
+⏰ المذاكرة بدون خطة: حدد هتذاكر إيه قبل ما تبدأ عشان وقتك ما يضيعش.
+
+😴 إهمال الراحة والنوم: الراحة الكافية تساعدك تحافظ على تركيزك ونشاطك.
+
+🔄 تأجيل المراجعة: متستناش ليلة الامتحان عشان تراجع كل اللي ذاكرته.
+
+📚 المذاكرة لساعات بدون توقف: قسم وقتك لجلسات مناسبة وخد فواصل قصيرة.
+
+⭐ وتذكر: المذاكرة الفعالة مش بعدد الساعات، لكن بمدى استفادتك من الوقت اللي بتذاكره.</div>
+        </div>
+    </div>
+
+    <!-- Modal 5 -->
+    <div class="modal-overlay" id="modal-5">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('modal-5')"><i class="fa-solid fa-xmark"></i></button>
+            <h2 class="modal-title">⏰ كيف تنظم وقت المذاكرة؟</h2>
+            <div class="modal-body">تنظيم الوقت مش معناه إنك تذاكر طول اليوم، لكن إنك تعرف إمتى تذاكر وإمتى ترتاح.
+
+📋 حدد أهدافك: اكتب الدروس أو المهام اللي محتاج تخلصها.
+
+⏱️ قسّم وقتك: خصص وقتًا لكل مادة، وخد فترات راحة قصيرة بين جلسات المذاكرة.
+
+📱 ابعد عن المشتتات: حط الهاتف بعيدًا أو اقفل الإشعارات أثناء المذاكرة.
+
+📚 ابدأ بالأهم: خلّي المواد أو الدروس الأصعب في الوقت اللي بيكون تركيزك فيه أفضل.
+
+🔄 خصص وقتًا للمراجعة: حتى لو وقت قصير، المراجعة اليومية بتفرق جدًا.
+
+وأهم حاجة: ما تضغطش على نفسك، الاستمرار كل يوم أفضل من المذاكرة الكثيرة في يوم واحد. 🌱</div>
+        </div>
+    </div>
+
+    <!-- Modal 6 -->
+    <div class="modal-overlay" id="modal-6">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('modal-6')"><i class="fa-solid fa-xmark"></i></button>
+            <h2 class="modal-title">🧠 كيف تثبت المعلومات بسرعة؟</h2>
+            <div class="modal-body">تثبيت المعلومات مش معناه إنك تحفظ لساعات طويلة، لكن إنك تذاكر بطريقة صحيحة.
+
+📖 افهم أولًا: حاول تفهم المعلومة قبل ما تحفظها.
+
+🧠 اختبر نفسك: اقفل الكتاب وحاول تفتكر اللي ذاكرته من غير ما تبص.
+
+✍️ اكتب وراجع: اكتب أهم النقاط بأسلوبك، وراجعها على فترات متباعدة.
+
+🔗 اربط المعلومات: اربط المعلومة بمثال أو قصة أو شيء تعرفه بالفعل.
+
+⏰ نظّم وقتك: ذاكر في جلسات قصيرة مع فترات راحة، وابعد عن المشتتات.
+
+وفي النهاية، أهم شيء هو الاستمرار والمراجعة، مش عدد الساعات اللي قعدتها قدام الكتاب. 📚✨</div>
+        </div>
+    </div>
+
+    <!-- توقيع التطوير -->
+    <div class="developer-footer">
+        Developed by <span>Eng. Salma Ashraf Ghorieb</span>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.getElementById('theme-icon');
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+        }
+
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        // إغلاق المودال عند الضغط في المساحة الخارجية
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal-overlay')) {
+                event.target.classList.remove('active');
+            }
+        }
+    </script>
+</body>
+</html>

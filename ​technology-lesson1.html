@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salma's Journey - تطور تكنولوجيا المعلومات والتحول الاجتماعي</title>
+    <!-- خط Cairo و Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome للأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: rgba(18, 24, 38, 0.75);
+            --card-hover: rgba(30, 41, 59, 0.8);
+            --text-main: #ffffff;
+            --text-sub: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --primary-accent: #ec4899;
+            --secondary-accent: #8b5cf6;
+            --gold-accent: #f59e0b;
+            --glow-1: rgba(245, 158, 11, 0.15);
+            --glow-2: rgba(236, 72, 153, 0.12);
+        }
+
+        [data-theme="light"] {
+            --bg-color: #f8fafc;
+            --card-bg: rgba(255, 255, 255, 0.85);
+            --card-hover: #ffffff;
+            --text-main: #0f172a;
+            --text-sub: #64748b;
+            --border-color: rgba(0, 0, 0, 0.08);
+            --glow-1: rgba(245, 158, 11, 0.08);
+            --glow-2: rgba(236, 72, 153, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', 'Poppins', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            padding: 0 1rem 3rem 1rem;
+            overflow-x: hidden;
+        }
+
+        .bg-glow-1 {
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, var(--glow-1) 0%, transparent 70%);
+            top: -100px;
+            right: 10%;
+            filter: blur(70px);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .bg-glow-2 {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--glow-2) 0%, transparent 70%);
+            bottom: 10%;
+            left: 10%;
+            filter: blur(70px);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .top-navbar {
+            position: sticky;
+            top: 15px;
+            width: 100%;
+            max-width: 900px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 0.8rem 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            z-index: 1000;
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 6px 14px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .back-btn:hover {
+            border-color: var(--gold-accent);
+            color: var(--gold-accent);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .icon-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .main-container {
+            width: 100%;
+            max-width: 900px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 28px;
+            padding: 2.5rem 2rem;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            z-index: 1;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .badge-wrapper {
+            text-align: center;
+        }
+
+        .badge-pill {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(245, 158, 11, 0.15);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            border-radius: 50px;
+            color: #fbbf24;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero-title {
+            text-align: center;
+            font-size: 2.1rem;
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-title span {
+            background: linear-gradient(135deg, #f59e0b, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            text-align: center;
+            color: var(--text-sub);
+            font-size: 0.95rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-box {
+            background: rgba(11, 15, 25, 0.5);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 1.8rem;
+            margin-bottom: 2rem;
+        }
+
+        [data-theme="light"] .section-box {
+            background: rgba(241, 245, 249, 0.6);
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--gold-accent);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.2rem;
+            margin-top: 1rem;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 1.2rem;
+        }
+
+        .info-card h4 {
+            color: var(--primary-accent);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-card p, .info-card ul {
+            font-size: 0.9rem;
+            color: var(--text-sub);
+            line-height: 1.6;
+        }
+
+        .info-card ul {
+            list-style: none;
+            padding-right: 0;
+        }
+
+        .info-card ul li {
+            position: relative;
+            padding-right: 1.2rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .info-card ul li::before {
+            content: "•";
+            color: var(--gold-accent);
+            font-size: 1.2rem;
+            position: absolute;
+            right: 0;
+            top: -2px;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        .custom-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+        }
+
+        .custom-table th, .custom-table td {
+            border: 1px solid var(--border-color);
+            padding: 10px;
+            text-align: center;
+            vertical-align: top;
+        }
+
+        .custom-table th {
+            background: rgba(245, 158, 11, 0.15);
+            color: var(--gold-accent);
+            font-weight: 700;
+        }
+
+        .quiz-section {
+            border-top: 2px dashed var(--border-color);
+            padding-top: 2.5rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .start-btn, .restart-btn {
+            background: linear-gradient(135deg, #f59e0b, #ec4899);
+            color: #ffffff;
+            font-size: 1.1rem;
+            font-weight: 700;
+            padding: 12px 35px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(245, 158, 11, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .restart-btn {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            margin-top: 1.5rem;
+        }
+
+        .start-btn:hover, .restart-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(245, 158, 11, 0.5);
+        }
+
+        #quiz-container {
+            display: none;
+            text-align: right;
+            margin-top: 2rem;
+        }
+
+        .quiz-card {
+            background: rgba(11, 15, 25, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        [data-theme="light"] .quiz-card {
+            background: #ffffff;
+        }
+
+        .quiz-question {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .q-num {
+            background: var(--gold-accent);
+            color: #000;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .option-btn {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 10px 14px;
+            color: var(--text-main);
+            text-align: right;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .option-btn:hover {
+            border-color: var(--gold-accent);
+            background: rgba(245, 158, 11, 0.05);
+        }
+
+        .option-btn.selected {
+            border-color: var(--gold-accent);
+            background: rgba(245, 158, 11, 0.2);
+        }
+
+        .submit-quiz-btn {
+            background: #10b981;
+            color: #ffffff;
+            font-size: 1rem;
+            font-weight: 700;
+            padding: 10px 30px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            margin-top: 1rem;
+            width: 100%;
+            transition: all 0.3s;
+        }
+
+        .submit-quiz-btn:hover {
+            background: #059669;
+        }
+
+        #result-box {
+            display: none;
+            background: rgba(11, 15, 25, 0.8);
+            border: 1px solid var(--border-color);
+            border-radius: 18px;
+            padding: 2rem 1.5rem;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        #result-box h3 {
+            font-size: 1.5rem;
+            color: #34d399;
+            margin-bottom: 0.5rem;
+        }
+
+        #result-score {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #ffffff;
+        }
+
+        .review-section {
+            text-align: right;
+            margin-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5rem;
+        }
+
+        .review-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1rem 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .review-card.correct {
+            border-color: rgba(16, 185, 129, 0.5);
+            background: rgba(16, 185, 129, 0.05);
+        }
+
+        .review-card.wrong {
+            border-color: rgba(239, 68, 68, 0.5);
+            background: rgba(239, 68, 68, 0.05);
+        }
+
+        .review-status {
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+        }
+
+        .correct .review-status { color: #34d399; }
+        .wrong .review-status { color: #f87171; }
+
+        .explanation {
+            font-size: 0.85rem;
+            color: var(--text-sub);
+            margin-top: 0.5rem;
+            line-height: 1.5;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 8px 12px;
+            border-radius: 8px;
+        }
+
+        .floating-btn {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            z-index: 99;
+            width: 55px;
+            height: 55px;
+            background: #25d366;
+            color: #ffffff;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.6rem;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+            transition: transform 0.3s ease;
+            text-decoration: none;
+        }
+
+        .floating-btn:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .developer-footer {
+            margin-top: 2.5rem;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.85rem;
+            color: var(--text-sub);
+            z-index: 1;
+        }
+
+        .developer-footer span {
+            color: var(--primary-accent);
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-glow-1"></div>
+    <div class="bg-glow-2"></div>
+
+    <a href="https://wa.me/201206304684" target="_blank" class="floating-btn" title="تواصل عبر WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Navbar -->
+    <header class="top-navbar">
+        <a href="ai-programming.html" class="back-btn">
+            <i class="fa-solid fa-arrow-right"></i>
+            الرئيسية
+        </a>
+
+        <div class="nav-actions">
+            <button class="icon-btn" onclick="toggleTheme()" title="تغيير المظهر">
+                <i class="fa-solid fa-moon" id="theme-icon"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-container">
+        <div class="badge-wrapper">
+            <span class="badge-pill"><i class="fa-solid fa-laptop-code"></i> 1-1 تكنولوجيا المعلومات</span>
+        </div>
+
+        <h1 class="hero-title">
+            تطور تكنولوجيا المعلومات <span>والتحول الاجتماعي</span>
+        </h1>
+        <p class="hero-subtitle">دراسة مراحل تطور الحواسيب، الشبكات، وقانون مور والتقنيات الناشئة.</p>
+
+        <!-- السؤال الرئيسي والفكرة -->
+        <div class="section-box">
+            <h2 class="section-title"><i class="fa-solid fa-circle-question"></i> الفكرة والسؤال الرئيسي</h2>
+            <div class="grid-2">
+                <div class="info-card">
+                    <h4>الفكرة الرئيسية</h4>
+                    <p>في كل مرحلة تكنولوجية ظهرت وسائل جديدة وأثرت في تواصل المجتمع وعمله وتجارته.</p>
+                </div>
+                <div class="info-card">
+                    <h4>السؤال الرئيسي</h4>
+                    <p>كيف تطورت تكنولوجيا المعلومات عبر مراحلها الرئيسية، وكيف غيّرت كل مرحلة المجتمع؟</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- تاريخ تكنولوجيا المعلومات IT -->
+        <div class="section-box">
+            <h2 class="section-title"><i class="fa-solid fa-clock-rotate-left"></i> 1. تاريخ تكنولوجيا المعلومات (IT)</h2>
+            <div class="table-responsive">
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th>1) الاربعينيات - الستينيات</th>
+                            <th>2) السبعينيات - الثمانينيات</th>
+                            <th>3) التسعينيات</th>
+                            <th>4) العقد الأول من الألفية</th>
+                            <th>5) العقد الثاني من الألفية وما بعدها</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>ظهور الحواسيب الإلكترونية</strong> (ENIAC) واستخدام العمليات المفرغة.</td>
+                            <td><strong>بداية استخدام التقنيات الشخصية</strong> (PCs).</td>
+                            <td><strong>ظهور الإنترنت</strong> وتسهيل الوصول العالمي للمعلومات والبريد الإلكتروني.</td>
+                            <td><strong>ظهور الهواتف الذكية</strong> والويب التفاعلي (Web 2.0).</td>
+                            <td><strong>تحليل البيانات الضخمة</strong> والذكاء الاصطناعي (تعلم الآلة).</td>
+                        </tr>
+                        <tr>
+                            <td style="color: var(--primary-accent); font-weight: 600;">أثرها: استخدمت أساساً لأغراض عسكرية والحسابات العلمية.</td>
+                            <td style="color: var(--primary-accent); font-weight: 600;">أثرها: أصبح الحاسوب أداة شخصية في المنازل والمكاتب.</td>
+                            <td style="color: var(--primary-accent); font-weight: 600;">أثرها: انتشار سريع للمعلومات عبر الإنترنت.</td>
+                            <td style="color: var(--primary-accent); font-weight: 600;">أثرها: انتشار وسائل التواصل والمحتوى التفاعلي.</td>
+                            <td style="color: var(--primary-accent); font-weight: 600;">أثرها: تحليل البيانات الضخمة وتخصيص المحتوى.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- قانون مور -->
+            <div class="info-card" style="margin-top: 1.2rem;">
+                <h4><i class="fa-solid fa-microchip"></i> قانون مور (Moore's Law)</h4>
+                <p>ينص على أن عدد الترانزستورات في الدائرة المتكاملة يتضاعف كل عامين تقريباً، مما يوضح ازدياد القدرة الحسابية والقدرة التخزينية للحواسيب مع مرور الزمن بشكل مضاعف.</p>
+            </div>
+        </div>
+
+        <!-- التقنيات الاجتماعية والناشئة -->
+        <div class="section-box">
+            <h2 class="section-title"><i class="fa-solid fa-layer-group"></i> 2. التقنيات الناشئة والاجتماعية</h2>
+            <div class="grid-2">
+                <div class="info-card">
+                    <h4>التقنيات الاجتماعية الناتجة</h4>
+                    <ul>
+                        <li><strong>شبكات التواصل الاجتماعي (SNS):</strong> منشآت للتواصل ونشر المحتوى.</li>
+                        <li><strong>التجارة الإلكترونية (E-commerce):</strong> البيع والشراء عبر الإنترنت.</li>
+                        <li><strong>العمل عن بُعد (Remote Work):</strong> العمل من أي مكان عبر الإنترنت.</li>
+                        <li><strong>التعليم عبر الإنترنت (Online Learning):</strong> توفير الدروس والمواد.</li>
+                        <li><strong>الدفع عبر الإنترنت (Cashless Payment):</strong> الدفع الإلكتروني بسهولة.</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h4>تقنيات ناشئة بارزة</h4>
+                    <ul>
+                        <li><strong>القيادة الذاتية:</strong> سيارات تستخدم الذكاء الاصطناعي للحركة.</li>
+                        <li><strong>الواقع المعزز / الافتراضي (AR/VR):</strong> إضافة معلومات رقمية للبيئة الحقيقية أو إنشاء بيئات افتراضية.</li>
+                        <li><strong>الحوسبة الكمومية (Quantum Computing):</strong> معالجة معلومات بسرعة هائلة تفوق الحواسيب الحالية.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- المصطلحات والخلاصة -->
+        <div class="section-box">
+            <h2 class="section-title"><i class="fa-solid fa-key"></i> المصطلحات الأساسية والخلاصة</h2>
+            <div class="grid-2">
+                <div class="info-card">
+                    <h4>مصطلحات أساسية</h4>
+                    <p><strong>• الحوسبة السحابية:</strong> تخزين البيانات والمعالجة عبر الإنترنت.</p>
+                    <p><strong>• الذكاء الاصطناعي:</strong> أنظمة ذكية تحاكي العقل البشري وقدرته على التعلم.</p>
+                </div>
+                <div class="info-card">
+                    <h4>الخلاصة</h4>
+                    <p>مرت تكنولوجيا المعلومات بخمس مراحل رئيسية، وكل مرحلة قدمت أدوات جديدة غيرت طريقة تواصل المجتمع وعمله وتجاره وصولاً للذكاء الاصطناعي والحوسبة الكمومية.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- قسم الاختبار التفاعلي -->
+        <div class="quiz-section">
+            <div class="badge-wrapper">
+                <span class="badge-pill" style="background: rgba(239, 68, 68, 0.15); color: #ef4444; border-color: rgba(239, 68, 68, 0.3);">
+                    <i class="fa-solid fa-brain"></i> اختبار الدرس الأسبوعي
+                </span>
+            </div>
+            <h2 style="font-size: 1.5rem; margin-bottom: 1rem;">اختبار قياس الفهم والتطور التكنولوجي</h2>
+            <p style="color: var(--text-sub); margin-bottom: 1.5rem;">انقر للبدء، اختبر معلوماتك واعرف إجاباتك الخاطئة مع التفسير العلمي.</p>
+
+            <button class="start-btn" id="start-btn" onclick="startQuiz()">
+                <i class="fa-solid fa-play"></i> بدء الاختبار
+            </button>
+
+            <!-- الأسئلة -->
+            <div id="quiz-container">
+
+                <!-- سؤال 1 -->
+                <div class="quiz-card">
+                    <div class="quiz-question">
+                        <span class="q-num">1</span>
+                        <span>شهدت مرحلة الاربعينيات إلى الستينيات ظهور أولى الحواسيب الإلكترونية مثل (ENIAC) واعتمادت على:</span>
+                    </div>
+                    <div class="quiz-options">
+                        <button class="option-btn" onclick="selectOption(1, 0)">أ) الترانزستورات النانوية</button>
+                        <button class="option-btn" onclick="selectOption(1, 1)">ب) الصمامات / العمليات المفرغة</button>
+                        <button class="option-btn" onclick="selectOption(2, 2)">ج) شبكات الألياف الضوئية</button>
+                    </div>
+                </div>
+
+                <!-- سؤال 2 -->
+                <div class="quiz-card">
+                    <div class="quiz-question">
+                        <span class="q-num">2</span>
+                        <span>ينص قانون مور (Moore's Law) على مضاعفة عدد الترانزستورات في الدائرة المتكاملة كل:</span>
+                    </div>
+                    <div class="quiz-options">
+                        <button class="option-btn" onclick="selectOption(2, 0)">أ) 5 سنوات</button>
+                        <button class="option-btn" onclick="selectOption(2, 1)">ب) عامين تقريباً</button>
+                        <button class="option-btn" onclick="selectOption(2, 2)">ج) 10 سنوات</button>
+                    </div>
+                </div>
+
+                <!-- سؤال 3 -->
+                <div class="quiz-card">
+                    <div class="quiz-question">
+                        <span class="q-num">3</span>
+                        <span>التقنية الناشئة التي تقوم بإنشاء بيئات افتراضية كاملة أو إضافة معلومات رقمية للبيئة الحقيقية هي:</span>
+                    </div>
+                    <div class="quiz-options">
+                        <button class="option-btn" onclick="selectOption(3, 0)">أ) الحوسبة السحابية</button>
+                        <button class="option-btn" onclick="selectOption(3, 1)">ب) الواقع المعزز / الافتراضي (AR/VR)</button>
+                        <button class="option-btn" onclick="selectOption(3, 2)">ج) التجارة الإلكترونية</button>
+                    </div>
+                </div>
+
+                <!-- سؤال 4 -->
+                <div class="quiz-card">
+                    <div class="quiz-question">
+                        <span class="q-num">4</span>
+                        <span>مرحلة ظهر فيها الويب التفاعلي (Web 2.0) والهواتف الذكية بشكل موسع هي:</span>
+                    </div>
+                    <div class="quiz-options">
+                        <button class="option-btn" onclick="selectOption(4, 0)">أ) التسعينيات</button>
+                        <button class="option-btn" onclick="selectOption(4, 1)">ب) العقد الأول من الألفية (2000s)</button>
+                        <button class="option-btn" onclick="selectOption(4, 2)">ج) السبعينيات</button>
+                    </div>
+                </div>
+
+                <!-- سؤال 5 -->
+                <div class="quiz-card">
+                    <div class="quiz-question">
+                        <span class="q-num">5</span>
+                        <span>التقنية التي تعالج البيانات بسرعات هائلة جداً وتتفوق بشكل خرافي على الحواسيب الحالية هي:</span>
+                    </div>
+                    <div class="quiz-options">
+                        <button class="option-btn" onclick="selectOption(5, 0)">أ) الحوسبة الكمومية (Quantum Computing)</button>
+                        <button class="option-btn" onclick="selectOption(5, 1)">ب) البريد الإلكتروني</button>
+                        <button class="option-btn" onclick="selectOption(5, 2)">ج) أجهزة التلفاز التفاعلية</button>
+                    </div>
+                </div>
+
+                <button class="submit-quiz-btn" onclick="calculateResult()">إنهاء الاختبار وعرض النتيجة وتحليل الأخطاء</button>
+            </div>
+
+            <!-- صندوق النتيجة -->
+            <div id="result-box">
+                <h3 id="result-title">تم إنهاء الاختبار</h3>
+                <p style="color: var(--text-sub); margin-bottom: 0.5rem;">درجتك النهائية هي:</p>
+                <div id="result-score">0 / 5</div>
+                <p id="result-eval" style="margin-top: 0.8rem; font-weight: 600; color: #fbbf24;"></p>
+
+                <div class="review-section" id="review-container">
+                    <h4 style="margin-bottom: 1rem; color: var(--gold-accent);"><i class="fa-solid fa-list-check"></i> تفاصيل وإجابات الاختبار:</h4>
+                    <div id="review-list"></div>
+                </div>
+
+                <button class="restart-btn" onclick="restartQuiz()">
+                    <i class="fa-solid fa-rotate-right"></i> إعادة الاختبار
+                </button>
+            </div>
+
+        </div>
+    </main>
+
+    <div class="developer-footer">
+        Developed by <span>Eng. Salma Ashraf Ghorieb</span>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.getElementById('theme-icon');
+            
+            if (body.getAttribute('data-theme') === 'light') {
+                body.removeAttribute('data-theme');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            } else {
+                body.setAttribute('data-theme', 'light');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+        }
+
+        const quizData = [
+            {
+                q: "1. شهدت مرحلة الاربعينيات إلى الستينيات ظهور أولى الحواسيب الإلكترونية مثل (ENIAC) واعتمادت على:",
+                options: ["أ) الترانزستورات النانوية", "ب) الصمامات / العمليات المفرغة", "ج) شبكات الألياف الضوئية"],
+                correct: 1,
+                explain: "بدأت الحواسيب الأولى مثل ENIAC باستخدام أنابيب الصمامات المفرغة قبل اختراع الترانزستورات."
+            },
+            {
+                q: "2. ينص قانون مور (Moore's Law) على مضاعفة عدد الترانزستورات في الدائرة المتكاملة كل:",
+                options: ["أ) 5 سنوات", "ب) عامين تقريباً", "ج) 10 سنوات"],
+                correct: 1,
+                explain: "لاحظ جوردون مور أن عدد الترانزستورات يرتفع بشكل مضاعف كل سنتين مما يزيد قدرة المعالجة."
+            },
+            {
+                q: "3. التقنية الناشئة التي تقوم بإنشاء بيئات افتراضية كاملة أو إضافة معلومات رقمية للبيئة الحقيقية هي:",
+                options: ["أ) الحوسبة السحابية", "ب) الواقع المعزز / الافتراضي (AR/VR)", "ج) التجارة الإلكترونية"],
+                correct: 1,
+                explain: "الواقع المعزز يدمج عناصر رقمية بالواقع، بينما الافتراضي ينشئ بيئة رقمية بالكامل."
+            },
+            {
+                q: "4. مرحلة ظهر فيها الويب التفاعلي (Web 2.0) والهواتف الذكية بشكل موسع هي:",
+                options: ["أ) التسعينيات", "ب) العقد الأول من الألفية (2000s)", "ج) السبعينيات"],
+                correct: 1,
+                explain: "شهد العقد الأول بعد عام 2000 إطلاق الأجهزة الذكية وبداية منصات التواصل التفاعلية Web 2.0."
+            },
+            {
+                q: "5. التقنية التي تعالج البيانات بسرعات هائلة جداً وتتفوق بشكل خرافي على الحواسيب الحالية هي:",
+                options: ["أ) الحوسبة الكمومية (Quantum Computing)", "ب) البريد الإلكتروني", "ج) أجهزة التلفاز التفاعلية"],
+                correct: 0,
+                explain: "تعتمد الحوسبة الكمومية على الفيزياء الكمية لتنفيذ عمليات معقدة للغاية في ثوانٍ معدودة."
+            }
+        ];
+
+        const userAnswers = {};
+
+        function startQuiz() {
+            document.getElementById('start-btn').style.display = 'none';
+            document.getElementById('quiz-container').style.display = 'block';
+            document.getElementById('quiz-container').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function selectOption(qNum, optionIdx) {
+            userAnswers[qNum] = optionIdx;
+            
+            const quizCards = document.querySelectorAll('.quiz-card');
+            const targetCard = quizCards[qNum - 1];
+            const buttons = targetCard.querySelectorAll('.option-btn');
+            
+            buttons.forEach((btn, idx) => {
+                if (idx === optionIdx) {
+                    btn.classList.add('selected');
+                } else {
+                    btn.classList.remove('selected');
+                }
+            });
+        }
+
+        function calculateResult() {
+            if (Object.keys(userAnswers).length < quizData.length) {
+                alert('يرجى الإجابة على جميع الأسئلة قبل إنهاء الاختبار!');
+                return;
+            }
+
+            let score = 0;
+            const reviewList = document.getElementById('review-list');
+            reviewList.innerHTML = '';
+
+            quizData.forEach((item, index) => {
+                const qNum = index + 1;
+                const userChoice = userAnswers[qNum];
+                const isCorrect = userChoice === item.correct;
+                
+                if (isCorrect) score++;
+
+                const reviewCard = document.createElement('div');
+                reviewCard.className = `review-card ${isCorrect ? 'correct' : 'wrong'}`;
+                
+                reviewCard.innerHTML = `
+                    <div class="review-status">
+                        ${isCorrect ? '<i class="fa-solid fa-circle-check"></i> إجابة صحيحة' : '<i class="fa-solid fa-circle-xmark"></i> إجابة خاطئة'}
+                    </div>
+                    <strong>${item.q}</strong><br>
+                    <span style="font-size: 0.85rem; color: var(--text-main);">إجابتك: ${item.options[userChoice]}</span><br>
+                    ${!isCorrect ? `<span style="font-size: 0.85rem; color: #34d399; font-weight: 600;">الإجابة الصحيحة: ${item.options[item.correct]}</span><br>` : ''}
+                    <div class="explanation">
+                        <strong>التفسير:</strong> ${item.explain}
+                    </div>
+                `;
+                reviewList.appendChild(reviewCard);
+            });
+
+            document.getElementById('quiz-container').style.display = 'none';
+            const resultBox = document.getElementById('result-box');
+            resultBox.style.display = 'block';
+            document.getElementById('result-score').innerText = score + ' / ' + quizData.length;
+
+            const evalText = document.getElementById('result-eval');
+            if (score === quizData.length) {
+                evalText.innerText = '🌟 ممتاز جداً! فهم شامل وممتاز لمراحل التكنولوجيا والذكاء الاصطناعي.';
+            } else if (score >= 3) {
+                evalText.innerText = '👍 عمل جيد! راجع الإجابات والتفسير بالأسفل لتقوية النقاط الضعيفة.';
+            } else {
+                evalText.innerText = '💪 يمكنك تحسين ذلك، تفحص التفسير وأعد الاختبار مرة أخرى!';
+            }
+
+            resultBox.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function restartQuiz() {
+            for (let key in userAnswers) {
+                delete userAnswers[key];
+            }
+
+            const buttons = document.querySelectorAll('.option-btn');
+            buttons.forEach(btn => btn.classList.remove('selected'));
+
+            document.getElementById('result-box').style.display = 'none';
+            document.getElementById('quiz-container').style.display = 'block';
+            document.getElementById('quiz-container').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

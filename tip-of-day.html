@@ -1,0 +1,2015 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Salma's Journey - نصائح للطالب</title>
+
+    <!-- الخطوط -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Poppins:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+    <style>
+
+        /* =========================
+           الألوان الأساسية
+        ========================== */
+
+        :root {
+
+            --bg-color: #f7faf5;
+
+            --card-bg: rgba(255, 255, 255, 0.95);
+
+            --card-hover: #ffffff;
+
+            --text-main: #254d3b;
+
+            --text-body: #34483e;
+
+            --text-sub: #6b7d72;
+
+            --primary-accent: #4f8a68;
+
+            --secondary-accent: #c49a45;
+
+            --border-color: rgba(79, 138, 104, 0.16);
+
+            --glow-1: rgba(79, 138, 104, 0.13);
+
+            --glow-2: rgba(196, 154, 69, 0.11);
+        }
+
+
+        /* =========================
+           Dark Mode
+        ========================== */
+
+        [data-theme="dark"] {
+
+            --bg-color: #0d1914;
+
+            --card-bg: rgba(24, 39, 31, 0.94);
+
+            --card-hover: rgba(31, 50, 40, 0.98);
+
+            --text-main: #e8f5ed;
+
+            --text-body: #dce9e1;
+
+            --text-sub: #9eafa5;
+
+            --primary-accent: #8bc59f;
+
+            --secondary-accent: #d6b76d;
+
+            --border-color: rgba(139, 197, 159, 0.2);
+
+            --glow-1: rgba(79, 138, 104, 0.19);
+
+            --glow-2: rgba(196, 154, 69, 0.14);
+        }
+
+
+        /* =========================
+           General
+        ========================== */
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+            font-family:
+                'Cairo',
+                'Poppins',
+                sans-serif;
+
+            transition:
+                background-color 0.3s ease,
+                color 0.3s ease,
+                border-color 0.3s ease;
+        }
+
+
+        body {
+
+            background-color:
+                var(--bg-color);
+
+            color:
+                var(--text-body);
+
+            min-height: 100vh;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            position: relative;
+
+            padding:
+                1.5rem 1rem 3rem;
+
+            overflow-x: hidden;
+        }
+
+
+        /* =========================
+           Background Glow
+        ========================== */
+
+        .bg-glow-1 {
+
+            position: absolute;
+
+            width: 500px;
+
+            height: 500px;
+
+            background:
+                radial-gradient(
+                    circle,
+                    var(--glow-1) 0%,
+                    transparent 70%
+                );
+
+            top: -130px;
+
+            right: 5%;
+
+            filter: blur(80px);
+
+            z-index: 0;
+
+            pointer-events: none;
+        }
+
+
+        .bg-glow-2 {
+
+            position: absolute;
+
+            width: 450px;
+
+            height: 450px;
+
+            background:
+                radial-gradient(
+                    circle,
+                    var(--glow-2) 0%,
+                    transparent 70%
+                );
+
+            bottom: 5%;
+
+            left: 5%;
+
+            filter: blur(80px);
+
+            z-index: 0;
+
+            pointer-events: none;
+        }
+
+
+        /* =========================
+           Navbar
+        ========================== */
+
+        .top-navbar {
+
+            width: 100%;
+
+            max-width: 900px;
+
+            background:
+                var(--card-bg);
+
+            border:
+                1px solid var(--border-color);
+
+            border-radius:
+                20px;
+
+            padding:
+                0.8rem 1.2rem;
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items:
+                center;
+
+            backdrop-filter:
+                blur(16px);
+
+            z-index: 10;
+
+            margin-bottom:
+                2rem;
+
+            box-shadow:
+                0 10px 30px
+                rgba(40, 80, 55, 0.06);
+        }
+
+
+        /* =========================
+           Back Button
+        ========================== */
+
+        .back-btn {
+
+            display: flex;
+
+            align-items:
+                center;
+
+            gap:
+                8px;
+
+            color:
+                var(--text-main);
+
+            text-decoration:
+                none;
+
+            font-weight:
+                700;
+
+            font-size:
+                0.9rem;
+
+            background:
+                rgba(79, 138, 104, 0.08);
+
+            padding:
+                6px 16px;
+
+            border-radius:
+                12px;
+
+            border:
+                1px solid var(--border-color);
+        }
+
+
+        .back-btn:hover {
+
+            border-color:
+                var(--primary-accent);
+
+            color:
+                var(--primary-accent);
+
+            transform:
+                translateX(2px);
+        }
+
+
+        /* =========================
+           Theme Button
+        ========================== */
+
+        .icon-btn {
+
+            background:
+                rgba(79, 138, 104, 0.08);
+
+            border:
+                1px solid var(--border-color);
+
+            color:
+                var(--text-main);
+
+            width:
+                40px;
+
+            height:
+                40px;
+
+            border-radius:
+                12px;
+
+            display:
+                flex;
+
+            justify-content:
+                center;
+
+            align-items:
+                center;
+
+            cursor:
+                pointer;
+
+            font-size:
+                1.05rem;
+        }
+
+
+        .icon-btn:hover {
+
+            border-color:
+                var(--primary-accent);
+
+            color:
+                var(--primary-accent);
+
+            transform:
+                rotate(8deg);
+        }
+
+
+        /* =========================
+           Main Container
+        ========================== */
+
+        .main-container {
+
+            width:
+                100%;
+
+            max-width:
+                900px;
+
+            background:
+                var(--card-bg);
+
+            border:
+                1px solid var(--border-color);
+
+            border-radius:
+                28px;
+
+            padding:
+                2.5rem 2rem;
+
+            backdrop-filter:
+                blur(16px);
+
+            z-index:
+                1;
+
+            box-shadow:
+                0 20px 40px
+                rgba(40, 80, 55, 0.07);
+        }
+
+
+        /* =========================
+           Badge
+        ========================== */
+
+        .badge-pill {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            gap:
+                8px;
+
+            padding:
+                6px 18px;
+
+            background:
+                rgba(79, 138, 104, 0.09);
+
+            border:
+                1px solid
+                rgba(79, 138, 104, 0.22);
+
+            border-radius:
+                50px;
+
+            color:
+                var(--primary-accent);
+
+            font-size:
+                0.88rem;
+
+            font-weight:
+                700;
+
+            margin-bottom:
+                1.2rem;
+        }
+
+
+        /* =========================
+           Hero
+        ========================== */
+
+        .hero-title {
+
+            font-size:
+                2.2rem;
+
+            font-weight:
+                800;
+
+            line-height:
+                1.3;
+
+            margin-bottom:
+                0.5rem;
+
+            color:
+                var(--text-main);
+        }
+
+
+        .hero-title span {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--primary-accent),
+                    var(--secondary-accent)
+                );
+
+            -webkit-background-clip:
+                text;
+
+            -webkit-text-fill-color:
+                transparent;
+        }
+
+
+        .hero-subtitle {
+
+            color:
+                var(--text-sub);
+
+            font-size:
+                0.98rem;
+
+            margin-bottom:
+                2rem;
+
+            line-height:
+                1.8;
+        }
+
+
+        /* =========================
+           Cards Grid
+        ========================== */
+
+        .cards-grid {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(380px, 1fr)
+                );
+
+            gap:
+                1.5rem;
+        }
+
+
+        @media (max-width: 480px) {
+
+            .cards-grid {
+
+                grid-template-columns:
+                    1fr;
+            }
+        }
+
+
+        /* =========================
+           Card
+        ========================== */
+
+        .tip-card {
+
+            background:
+                var(--bg-color);
+
+            border:
+                1px solid
+                var(--border-color);
+
+            border-radius:
+                22px;
+
+            padding:
+                1.8rem;
+
+            cursor:
+                pointer;
+
+            transition:
+                all 0.3s ease;
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            justify-content:
+                space-between;
+
+            min-height:
+                220px;
+        }
+
+
+        .tip-card:hover {
+
+            border-color:
+                var(--primary-accent);
+
+            transform:
+                translateY(-5px);
+
+            box-shadow:
+                0 14px 30px
+                rgba(79, 138, 104, 0.14);
+
+            background:
+                var(--card-hover);
+        }
+
+
+        .tip-card h3 {
+
+            font-size:
+                1.18rem;
+
+            font-weight:
+                700;
+
+            margin-bottom:
+                0.8rem;
+
+            color:
+                var(--text-main);
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                10px;
+
+            line-height:
+                1.7;
+        }
+
+
+        .tip-card p {
+
+            font-size:
+                0.9rem;
+
+            color:
+                var(--text-sub);
+
+            line-height:
+                1.8;
+
+            margin-bottom:
+                1.2rem;
+        }
+
+
+        .card-action {
+
+            font-size:
+                0.88rem;
+
+            font-weight:
+                700;
+
+            color:
+                var(--primary-accent);
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                6px;
+        }
+
+
+        .card-action i {
+
+            transition:
+                transform 0.3s ease;
+        }
+
+
+        .tip-card:hover
+        .card-action i {
+
+            transform:
+                translateX(-5px);
+        }
+
+
+        /* =========================
+           Modal
+        ========================== */
+
+        .modal-overlay {
+
+            position:
+                fixed;
+
+            top:
+                0;
+
+            left:
+                0;
+
+            width:
+                100%;
+
+            height:
+                100%;
+
+            background:
+                rgba(16, 30, 23, 0.68);
+
+            backdrop-filter:
+                blur(7px);
+
+            display:
+                flex;
+
+            justify-content:
+                center;
+
+            align-items:
+                center;
+
+            z-index:
+                1000;
+
+            opacity:
+                0;
+
+            visibility:
+                hidden;
+
+            transition:
+                all 0.3s ease;
+
+            padding:
+                1rem;
+        }
+
+
+        .modal-overlay.active {
+
+            opacity:
+                1;
+
+            visibility:
+                visible;
+        }
+
+
+        .modal-content {
+
+            background:
+                var(--card-bg);
+
+            border:
+                1px solid
+                var(--border-color);
+
+            border-radius:
+                26px;
+
+            width:
+                100%;
+
+            max-width:
+                680px;
+
+            max-height:
+                85vh;
+
+            overflow-y:
+                auto;
+
+            padding:
+                2.2rem;
+
+            position:
+                relative;
+
+            box-shadow:
+                0 25px 50px
+                rgba(0,0,0,0.24);
+
+            transform:
+                scale(0.9);
+
+            transition:
+                transform 0.3s ease;
+        }
+
+
+        .modal-overlay.active
+        .modal-content {
+
+            transform:
+                scale(1);
+        }
+
+
+        /* =========================
+           Close Button
+        ========================== */
+
+        .close-modal {
+
+            position:
+                absolute;
+
+            top:
+                1.2rem;
+
+            left:
+                1.2rem;
+
+            background:
+                rgba(196, 154, 69, 0.10);
+
+            color:
+                var(--secondary-accent);
+
+            border:
+                none;
+
+            width:
+                36px;
+
+            height:
+                36px;
+
+            border-radius:
+                50%;
+
+            cursor:
+                pointer;
+
+            display:
+                flex;
+
+            justify-content:
+                center;
+
+            align-items:
+                center;
+
+            font-size:
+                1rem;
+        }
+
+
+        .close-modal:hover {
+
+            background:
+                var(--secondary-accent);
+
+            color:
+                #fff;
+        }
+
+
+        /* =========================
+           Modal Title
+        ========================== */
+
+        .modal-title {
+
+            font-size:
+                1.4rem;
+
+            font-weight:
+                800;
+
+            margin-bottom:
+                1.2rem;
+
+            color:
+                var(--primary-accent);
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                10px;
+
+            padding-left:
+                35px;
+
+            line-height:
+                1.7;
+        }
+
+
+        /* =========================
+           Modal Body
+        ========================== */
+
+        .modal-body {
+
+            font-size:
+                1rem;
+
+            color:
+                var(--text-body);
+
+            line-height:
+                2.15;
+
+            white-space:
+                pre-line;
+        }
+
+
+        /* =========================
+           Footer
+        ========================== */
+
+        .developer-footer {
+
+            margin-top:
+                2.5rem;
+
+            text-align:
+                center;
+
+            font-family:
+                'Poppins',
+                sans-serif;
+
+            font-size:
+                0.85rem;
+
+            color:
+                var(--text-sub);
+
+            z-index:
+                1;
+        }
+
+
+        .developer-footer span {
+
+            color:
+                var(--primary-accent);
+
+            font-weight:
+                600;
+        }
+
+
+        /* =========================
+           Mobile
+        ========================== */
+
+        @media (max-width: 600px) {
+
+            body {
+
+                padding:
+                    1rem 0.8rem 2rem;
+            }
+
+
+            .main-container {
+
+                padding:
+                    1.7rem 1rem;
+
+                border-radius:
+                    22px;
+            }
+
+
+            .hero-title {
+
+                font-size:
+                    1.75rem;
+            }
+
+
+            .hero-subtitle {
+
+                font-size:
+                    0.9rem;
+            }
+
+
+            .cards-grid {
+
+                gap:
+                    1rem;
+            }
+
+
+            .tip-card {
+
+                padding:
+                    1.4rem;
+
+                min-height:
+                    200px;
+            }
+
+
+            .tip-card h3 {
+
+                font-size:
+                    1.05rem;
+            }
+
+
+            .modal-content {
+
+                padding:
+                    1.7rem 1.3rem;
+
+                border-radius:
+                    22px;
+            }
+
+
+            .modal-title {
+
+                font-size:
+                    1.2rem;
+            }
+
+
+            .modal-body {
+
+                font-size:
+                    0.93rem;
+
+                line-height:
+                    2;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- الخلفية -->
+
+    <div class="bg-glow-1"></div>
+
+    <div class="bg-glow-2"></div>
+
+
+    <!-- =========================
+         Navbar
+    ========================== -->
+
+    <header class="top-navbar">
+
+
+        <a
+            href="articles.html"
+            class="back-btn">
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+            المقالات
+
+        </a>
+
+
+        <button
+            class="icon-btn"
+            onclick="toggleTheme()"
+            title="تغيير المظهر">
+
+            <i
+                class="fa-solid fa-moon"
+                id="theme-icon">
+            </i>
+
+        </button>
+
+
+    </header>
+
+
+    <!-- =========================
+         Main
+    ========================== -->
+
+    <main class="main-container">
+
+
+        <div class="badge-pill">
+
+            <i class="fa-solid fa-seedling"></i>
+
+            نصائح للطالب
+
+        </div>
+
+
+        <h1 class="hero-title">
+
+            طوّر نفسك،
+            <span>وخطوة بعد خطوة ستصل</span>
+
+        </h1>
+
+
+        <p class="hero-subtitle">
+
+            نصائح بسيطة تساعدك على الاستمرار في التعلم،
+            وتنظيم أهدافك، والتعامل مع الدراسة بثقة وهدوء.
+
+        </p>
+
+
+        <!-- =========================
+             Cards
+        ========================== -->
+
+        <div class="cards-grid">
+
+
+            <!-- Card 1 -->
+
+            <div
+                class="tip-card"
+                onclick="openModal('modal-1')">
+
+                <div>
+
+                    <h3>
+                        🌱 ابدأ بخطوة صغيرة ولا تنتظر الكمال
+                    </h3>
+
+                    <p>
+                        لا تنتظر البداية المثالية؛ ابدأ بما تستطيع وحوّل أهدافك الكبيرة إلى خطوات بسيطة.
+                    </p>
+
+                </div>
+
+
+                <div class="card-action">
+
+                    اقرأ النصيحة
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                </div>
+
+            </div>
+
+
+            <!-- Card 2 -->
+
+            <div
+                class="tip-card"
+                onclick="openModal('modal-2')">
+
+                <div>
+
+                    <h3>
+                        🤍 لا تقارن نفسك بغيرك
+                    </h3>
+
+                    <p>
+                        لكل طالب طريقه وظروفه، لذلك ركز على تطورك أنت بدلًا من مقارنة نفسك بالآخرين.
+                    </p>
+
+                </div>
+
+
+                <div class="card-action">
+
+                    اقرأ النصيحة
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                </div>
+
+            </div>
+
+
+            <!-- Card 3 -->
+
+            <div
+                class="tip-card"
+                onclick="openModal('modal-3')">
+
+                <div>
+
+                    <h3>
+                        🧠 افهم قبل أن تحفظ
+                    </h3>
+
+                    <p>
+                        فهم المعلومة أولًا يجعل تعلمها وتذكرها وتطبيقها أسهل وأكثر فائدة.
+                    </p>
+
+                </div>
+
+
+                <div class="card-action">
+
+                    اقرأ النصيحة
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                </div>
+
+            </div>
+
+
+            <!-- Card 4 -->
+
+            <div
+                class="tip-card"
+                onclick="openModal('modal-4')">
+
+                <div>
+
+                    <h3>
+                        💪 لا تستسلم بسبب نتيجة واحدة
+                    </h3>
+
+                    <p>
+                        نتيجة اختبار واحد لا تحدد مستواك أو مستقبلك؛ تعلم من أخطائك وابدأ من جديد.
+                    </p>
+
+                </div>
+
+
+                <div class="card-action">
+
+                    اقرأ النصيحة
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                </div>
+
+            </div>
+
+
+            <!-- Card 5 -->
+
+            <div
+                class="tip-card"
+                onclick="openModal('modal-5')">
+
+                <div>
+
+                    <h3>
+                        🕌 لا تجعل الدراسة تنسيك صلاتك
+                    </h3>
+
+                    <p>
+                        نظّم وقتك بحيث تستطيع الاجتهاد في دراستك والمحافظة على صلاتك في وقتها.
+                    </p>
+
+                </div>
+
+
+                <div class="card-action">
+
+                    اقرأ النصيحة
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                </div>
+
+            </div>
+
+
+            <!-- Card 6 -->
+
+            <div
+                class="tip-card"
+                onclick="openModal('modal-6')">
+
+                <div>
+
+                    <h3>
+                        🎯 حدد هدفًا واضحًا واسْعَ إليه
+                    </h3>
+
+                    <p>
+                        الهدف الواضح يساعدك على معرفة الاتجاه والخطوة القادمة والاستمرار في طريقك.
+                    </p>
+
+                </div>
+
+
+                <div class="card-action">
+
+                    اقرأ النصيحة
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                </div>
+
+            </div>
+
+
+            <!-- Card 7 -->
+
+            <div
+                class="tip-card"
+                onclick="openModal('modal-7')">
+
+                <div>
+
+                    <h3>
+                        🔥 استمر حتى لو كان تقدمك بطيئًا
+                    </h3>
+
+                    <p>
+                        التقدم البسيط مع الاستمرار يمكن أن يصنع فرقًا كبيرًا مع الوقت.
+                    </p>
+
+                </div>
+
+
+                <div class="card-action">
+
+                    اقرأ النصيحة
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                </div>
+
+            </div>
+
+
+            <!-- Card 8 -->
+
+            <div
+                class="tip-card"
+                onclick="openModal('modal-8')">
+
+                <div>
+
+                    <h3>
+                        ❤️ كن لطيفًا مع نفسك أثناء التعلم
+                    </h3>
+
+                    <p>
+                        الخطأ والنسيان جزء طبيعي من التعلم؛ امنح نفسك وقتًا وحاول من جديد.
+                    </p>
+
+                </div>
+
+
+                <div class="card-action">
+
+                    اقرأ النصيحة
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+
+    <!-- ==================================================
+         MODAL 1
+    =================================================== -->
+
+    <div
+        class="modal-overlay"
+        id="modal-1">
+
+        <div class="modal-content">
+
+
+            <button
+                class="close-modal"
+                onclick="closeModal('modal-1')">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+
+            <h2 class="modal-title">
+
+                🌱 ابدأ بخطوة صغيرة ولا تنتظر الكمال
+
+            </h2>
+
+
+            <div class="modal-body">
+
+أحيانًا نؤجل المذاكرة أو العمل على أهدافنا لأننا نعتقد أننا لازم نبدأ بطريقة مثالية. لكن الحقيقة إن البداية البسيطة أفضل من الانتظار الطويل.
+
+📚 ابدأ بما تستطيع:
+
+لو عندك درس كبير، ابدأ بصفحة أو جزء صغير منه.
+
+🎯 قسّم هدفك:
+
+حوّل الهدف الكبير إلى خطوات بسيطة تقدر تنجزها واحدة واحدة.
+
+⏰ لا تنتظر الوقت المثالي:
+
+استغل الوقت المتاح أمامك بدل ما تقول «هبدأ بكرة».
+
+💪 اسمح لنفسك بالخطأ:
+
+مش لازم تكون ممتاز من البداية؛ المهم تتعلم وتتحسن مع الوقت.
+
+📖 قال الله تعالى:
+
+﴿فَإِذَا عَزَمْتَ فَتَوَكَّلْ عَلَى اللَّهِ﴾
+
+[آل عمران: 159]
+
+🤍 تذكر:
+
+لا تنتظر أن تصبح مستعدًا تمامًا، ابدأ بما تستطيع، ومع كل خطوة ستتعلم أكثر.
+
+⭐ رسالة:
+
+خطوة صغيرة اليوم قد تكون بداية إنجاز كبير غدًا. 🌱
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==================================================
+         MODAL 2
+    =================================================== -->
+
+    <div
+        class="modal-overlay"
+        id="modal-2">
+
+        <div class="modal-content">
+
+
+            <button
+                class="close-modal"
+                onclick="closeModal('modal-2')">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+
+            <h2 class="modal-title">
+
+                🤍 لا تقارن نفسك بغيرك
+
+            </h2>
+
+
+            <div class="modal-body">
+
+كل طالب له طريقه وظروفه وطريقة تعلمه، لذلك لا تجعل مقارنة نفسك بالآخرين سببًا في الإحباط. ركّز على تطوير نفسك والاستفادة من وقتك.
+
+🌱 قارن نفسك بنفسك:
+
+اسأل: هل أنا أفضل من مستواي السابق؟ ماذا تعلمت اليوم؟
+
+🎯 لكل شخص طريقه:
+
+قد يتقدم شخص في مادة بسرعة، بينما تحتاج أنت إلى وقت أطول، وهذا طبيعي.
+
+📚 ركز على هدفك:
+
+بدل مراقبة نتائج الآخرين، اهتم بما يمكنك فعله لتحسين مستواك.
+
+💪 قدّر تقدمك:
+
+حتى الخطوات الصغيرة مهمة، طالما أنك مستمر في التعلم.
+
+📖 قال الله تعالى:
+
+﴿وَأَنْ لَيْسَ لِلْإِنْسَانِ إِلَّا مَا سَعَى﴾
+
+[النجم: 39]
+
+🤍 تذكر:
+
+المطلوب منك أن تسعى وتجتهد، وليس أن تكون نسخة من شخص آخر.
+
+⭐ رسالة:
+
+لا تنظر إلى طريق غيرك وتنسَ طريقك؛ ركّز على خطوتك القادمة، واستعن بالله وواصل السعي. 🌱
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==================================================
+         MODAL 3
+    =================================================== -->
+
+    <div
+        class="modal-overlay"
+        id="modal-3">
+
+        <div class="modal-content">
+
+
+            <button
+                class="close-modal"
+                onclick="closeModal('modal-3')">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+
+            <h2 class="modal-title">
+
+                🧠 افهم قبل أن تحفظ
+
+            </h2>
+
+
+            <div class="modal-body">
+
+الحفظ مهم في الدراسة، لكن فهم المعلومة أولًا يجعل تعلمها أسهل وأكثر فائدة. والإسلام حثّ على التدبر والتفكر في كلام الله.
+
+📖 تدبر ما تقرأ:
+
+قال الله تعالى:
+
+﴿أَفَلَا يَتَدَبَّرُونَ الْقُرْآنَ﴾
+
+[محمد: 24]
+
+🧠 اسأل عن المعنى:
+
+قبل أن تحفظ أي معلومة، حاول أن تعرف معناها وسببها وكيف ترتبط بما تعلمته.
+
+🌱 لا تحفظ بلا فهم:
+
+عندما تفهم الفكرة، يصبح استرجاعها وتطبيقها أسهل.
+
+📚 طبّق ما تعلمت:
+
+بعد فهم الدرس، حاول شرحه بأسلوبك أو حل سؤال عليه.
+
+🤲 اطلب العلم من الله:
+
+ومن أجمل ما ندعو به:
+
+﴿وَقُلْ رَبِّ زِدْنِي عِلْمًا﴾
+
+[طه: 114]
+
+✨ تذكر:
+
+اقرأ بفهم، وتدبر، واسأل، ثم احفظ ما تحتاج إليه؛ فالعلم النافع ليس مجرد كلمات نحفظها، بل معرفة نفهمها ونستفيد منها. 🤍
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==================================================
+         MODAL 4
+    =================================================== -->
+
+    <div
+        class="modal-overlay"
+        id="modal-4">
+
+        <div class="modal-content">
+
+
+            <button
+                class="close-modal"
+                onclick="closeModal('modal-4')">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+
+            <h2 class="modal-title">
+
+                💪 لا تستسلم بسبب نتيجة واحدة
+
+            </h2>
+
+
+            <div class="modal-body">
+
+نتيجة امتحان واحد لا تحدد مستواك بالكامل، ولا تعني أن مستقبلك قد تحدد. كل تجربة دراسية يمكن أن تكون فرصة لتعرف ما تحتاج إلى تحسينه.
+
+📊 افهم أخطاءك:
+
+راجع إجاباتك واعرف أين أخطأت بدلًا من الاكتفاء بالحزن على النتيجة.
+
+📝 تعلم من التجربة:
+
+حدد الأشياء التي تحتاج إلى تطويرها وضع خطة بسيطة للمرة القادمة.
+
+🌱 ابدأ من جديد:
+
+لا تجعل نتيجة واحدة تمنعك من المحاولة والاستمرار.
+
+🎯 ركز على القادم:
+
+اسأل نفسك: ما الخطوة التي أستطيع القيام بها الآن لتحسين مستواي؟
+
+🤍 ثق بقدرتك على التعلم:
+
+مستواك يمكن أن يتحسن مع الوقت والممارسة والاجتهاد.
+
+⭐ تذكر:
+
+النتيجة تخبرك بمستواك في اختبار معيّن، لكنها لا تحدد قيمتك ولا تمنعك من التطور والنجاح. 🌱
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==================================================
+         MODAL 5
+    =================================================== -->
+
+    <div
+        class="modal-overlay"
+        id="modal-5">
+
+        <div class="modal-content">
+
+
+            <button
+                class="close-modal"
+                onclick="closeModal('modal-5')">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+
+            <h2 class="modal-title">
+
+                🕌 لا تجعل الدراسة تنسيك صلاتك
+
+            </h2>
+
+
+            <div class="modal-body">
+
+الدراسة مهمة، لكن الصلاة أيضًا جزء أساسي من يوم المسلم. حاول أن تنظم وقتك بحيث تستطيع أداء صلاتك في وقتها دون أن تهمل دراستك.
+
+⏰ نظّم وقتك:
+
+ضع مواعيد الصلاة في حسابك عند ترتيب جدول المذاكرة.
+
+📚 توقف للصلاة:
+
+عندما يحين وقت الصلاة، خذ استراحة وأدِّ صلاتك، ثم ارجع للمذاكرة.
+
+🤍 اجعل الصلاة راحة لك:
+
+الصلاة تمنحك فرصة للابتعاد قليلًا عن ضغط الدراسة والعودة بهدوء وتركيز.
+
+🌱 لا تؤجل بلا سبب:
+
+حاول ألا تجعل الانشغال بالدراسة سببًا في تأخير الصلاة عن وقتها.
+
+✨ وازن بين الاثنين:
+
+اجتهد في دراستك، وحافظ على عبادتك، واجعل كل واحد منهما جزءًا من يومك.
+
+📖 قال الله تعالى:
+
+﴿إِنَّ الصَّلَاةَ كَانَتْ عَلَى الْمُؤْمِنِينَ كِتَابًا مَوْقُوتًا﴾
+
+[النساء: 103]
+
+⭐ تذكر:
+
+تنظيم وقتك يساعدك على أن تعطي دراستك حقها وتحافظ على صلاتك في الوقت نفسه. 🤍
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==================================================
+         MODAL 6
+    =================================================== -->
+
+    <div
+        class="modal-overlay"
+        id="modal-6">
+
+        <div class="modal-content">
+
+
+            <button
+                class="close-modal"
+                onclick="closeModal('modal-6')">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+
+            <h2 class="modal-title">
+
+                🎯 حدد هدفًا واضحًا واسْعَ إليه
+
+            </h2>
+
+
+            <div class="modal-body">
+
+لما يكون عندك هدف واضح، بتعرف أنت بتذاكر ليه وإيه الخطوة اللي محتاج تعملها بعد كده. مش لازم تبدأ بخطة كبيرة؛ المهم يكون عندك اتجاه واضح.
+
+📝 اكتب هدفك:
+
+حدد الشيء الذي تريد تحقيقه، سواء في الدراسة أو تعلم مهارة جديدة.
+
+📚 قسّم الهدف:
+
+حوّل هدفك الكبير إلى خطوات صغيرة تقدر تنجزها يومًا بعد يوم.
+
+⏰ حدد وقتًا للإنجاز:
+
+خصص وقتًا مناسبًا كل يوم للعمل على هدفك.
+
+💪 استمر:
+
+لو يومك ما مشيش زي ما خططت، متعتبرش إنك فشلت؛ ارجع وكمل من حيث توقفت.
+
+🎯 راجع تقدمك:
+
+كل فترة اسأل نفسك: إيه اللي أنجزته؟ وإيه الخطوة القادمة؟
+
+⭐ تذكر:
+
+الهدف الواضح يساعدك تعرف طريقك، والاستمرار هو اللي يقربك منه. 🤍
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==================================================
+         MODAL 7
+    =================================================== -->
+
+    <div
+        class="modal-overlay"
+        id="modal-7">
+
+        <div class="modal-content">
+
+
+            <button
+                class="close-modal"
+                onclick="closeModal('modal-7')">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+
+            <h2 class="modal-title">
+
+                🔥 استمر حتى لو كان تقدمك بطيئًا
+
+            </h2>
+
+
+            <div class="modal-body">
+
+مش لازم تحقق كل أهدافك بسرعة، المهم إنك تستمر في المحاولة. التقدم البسيط مع الوقت ممكن يصنع فرقًا كبيرًا.
+
+🌱 خطوة صغيرة أفضل من التوقف:
+
+حتى لو أنجزت جزءًا بسيطًا من هدفك اليوم، فأنت ما زلت تتقدم.
+
+📚 لا تستعجل النتائج:
+
+التعلم يحتاج وقتًا وممارسة، فلا تجعل بطء النتائج سببًا للاستسلام.
+
+💪 تعلم من أخطائك:
+
+كل مرة تخطئ فيها، عندك فرصة تعرف إيه اللي محتاج تتحسن فيه.
+
+🎯 ركز على نفسك:
+
+قارن مستواك الحالي بمستواك السابق، وشوف أنت اتعلمت إيه جديد.
+
+⭐ تذكر:
+
+الطريق مش لازم يكون سريعًا عشان يكون ناجحًا؛ المهم ألا تتوقف عن السير. 🤍
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==================================================
+         MODAL 8
+    =================================================== -->
+
+    <div
+        class="modal-overlay"
+        id="modal-8">
+
+        <div class="modal-content">
+
+
+            <button
+                class="close-modal"
+                onclick="closeModal('modal-8')">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+
+            <h2 class="modal-title">
+
+                ❤️ كن لطيفًا مع نفسك أثناء التعلم
+
+            </h2>
+
+
+            <div class="modal-body">
+
+التعلم رحلة، ومن الطبيعي إنك تغلط أو تنسى أو تحتاج وقتًا أطول لفهم بعض الأشياء. المهم إنك تستمر وتحاول من جديد.
+
+🌱 لا تلوم نفسك على الخطأ:
+
+الخطأ جزء طبيعي من التعلم، والمهم تعرف منه إيه اللي محتاج تحسنه.
+
+📚 متقارنش نفسك بغيرك:
+
+كل شخص له طريقته وسرعته في التعلم.
+
+🧠 احتفل بتقدمك:
+
+حتى لو أنجزت حاجة بسيطة، فهي خطوة إلى الأمام.
+
+⏰ خذ وقتًا للراحة:
+
+الراحة تساعدك ترجع للمذاكرة بطاقة وتركيز أفضل.
+
+🤍 تحدث مع نفسك بإيجابية:
+
+بدل «أنا مش هقدر»، قل «هحاول وأتعلم لحد ما أفهم».
+
+⭐ تذكر:
+
+مش لازم تكون ممتاز من أول مرة؛ المهم إنك تتعلم، وتحاول، وتتقدم خطوة كل يوم. 🌱
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         Footer
+    ========================== -->
+
+    <div class="developer-footer">
+
+        Developed by
+
+        <span>
+            Eng. Salma Ashraf Ghorieb
+        </span>
+
+    </div>
+
+
+    <!-- =========================
+         JavaScript
+    ========================== -->
+
+    <script>
+
+
+        /* =========================
+           Dark / Light Mode
+        ========================== */
+
+        function toggleTheme() {
+
+            const body =
+                document.body;
+
+            const icon =
+                document.getElementById(
+                    "theme-icon"
+                );
+
+
+            if (
+                body.getAttribute(
+                    "data-theme"
+                ) === "dark"
+            ) {
+
+                body.removeAttribute(
+                    "data-theme"
+                );
+
+                icon.classList.remove(
+                    "fa-sun"
+                );
+
+                icon.classList.add(
+                    "fa-moon"
+                );
+
+            }
+
+            else {
+
+                body.setAttribute(
+                    "data-theme",
+                    "dark"
+                );
+
+                icon.classList.remove(
+                    "fa-moon"
+                );
+
+                icon.classList.add(
+                    "fa-sun"
+                );
+
+            }
+
+        }
+
+
+        /* =========================
+           Open Modal
+        ========================== */
+
+        function openModal(modalId) {
+
+            document
+                .getElementById(modalId)
+                .classList.add("active");
+
+        }
+
+
+        /* =========================
+           Close Modal
+        ========================== */
+
+        function closeModal(modalId) {
+
+            document
+                .getElementById(modalId)
+                .classList.remove("active");
+
+        }
+
+
+        /* =========================
+           Close Outside
+        ========================== */
+
+        window.onclick =
+            function(event) {
+
+                if (
+                    event.target.classList
+                        .contains(
+                            "modal-overlay"
+                        )
+                ) {
+
+                    event.target
+                        .classList
+                        .remove(
+                            "active"
+                        );
+
+                }
+
+            };
+
+
+        /* =========================
+           Close With ESC
+        ========================== */
+
+        document.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (
+                    event.key === "Escape"
+                ) {
+
+                    document
+                        .querySelectorAll(
+                            ".modal-overlay.active"
+                        )
+                        .forEach(
+                            modal => {
+
+                                modal.classList
+                                    .remove(
+                                        "active"
+                                    );
+
+                            }
+                        );
+
+                }
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>
